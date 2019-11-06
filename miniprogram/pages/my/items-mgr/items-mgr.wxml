@@ -3,19 +3,39 @@
         <text>图书列表</text>
         <image src="/icons/plus-square.png" bindtap="itemUpload"></image>
     </view>
-    <view class="items-list-body">
+<!--    <view class="items-list-body">-->
+<!--        <view class="items-grid">-->
+<!--            <view class="item-cell" hover-class="item-cell_active"-->
+<!--                  wx:for="{{items}}"-->
+<!--                  wx:key="{{id}}"-->
+<!--                  data-item-id="{{item.id}}"-->
+<!--                  bindtap="itemDetail"-->
+<!--                  bindlongpress="itemAction">-->
+<!--                <image class="item-cell_cover" mode="aspectFill"-->
+<!--                       src="{{item.coverUrl||'/images/demo-cover.jpg'}}"></image>-->
+<!--                <view class="item-cell_title">{{item.title||'未命名'}}</view>-->
+<!--            </view>-->
+<!--        </view>-->
+<!--    </view>-->
+    <scroll-view class="items-list-body" scroll-y bindscrolltolower="getMore">
         <view class="items-grid">
-            <view class="item-cell" hover-class="item-cell_active"
-                  wx:for="{{items}}"
-                  wx:key="{{id}}"
-                  data-item-id="{{item.id}}"
-                  bindtap="itemDetail"
-                  bindlongpress="itemAction">
-                <image class="item-cell_cover" mode="aspectFill"
-                       src="{{item.coverUrl||'/images/demo-cover.jpg'}}"></image>
-                <view class="item-cell_title">{{item.title||'未命名'}}</view>
-            </view>
+            <navigator class="item-cell" hover-class="item-cell_active"
+                       url="/pages/item/detail/detail?id={{item.id}}&from=2"
+                       wx:for="{{items}}"
+                       wx:key="{{id}}"
+                       data-item-id="{{item.id}}"
+                       bindlongpress="itemAction">
+                <view class="item-cell_container">
+                    <view class="item-cell_cover">
+                        <image mode="aspectFill"
+                               src="{{item.coverUrl||'/images/demo-cover.jpg'}}"></image>
+                    </view>
+                    <view class="item-cell_title">{{item.title||'未命名'}}</view>
+                </view>
+            </navigator>
         </view>
-    </view>
+    </scroll-view>
 </view>
+
+
 

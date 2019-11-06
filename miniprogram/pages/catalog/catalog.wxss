@@ -68,3 +68,29 @@ page {
     /*opacity: .6;*/
     background-color: #ececec;
 }
+
+.item-catalog_filter {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    font-size: 25rpx;
+}
+
+.item-catalog_filter-part {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    min-width: 50%;
+    max-width: 50%;
+    padding: 0 20rpx;
+}
+.catalog-filter-picker image {
+    width: 20rpx;
+    height: 20rpx;
+    margin-left: 10rpx;
+}
+
+.item-catalog_filter-label  {
+    color: #888888;
+    margin-right: 20rpx;
+}

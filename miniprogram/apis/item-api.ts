@@ -41,12 +41,15 @@ export class ItemApi {
     }
 
 
-    public query(page: number, size: number, tagId?: number): Promise<ItemQueryResponse> {
-        return this.http.get(`${config.apiBaseUrl}/item`, {
-            page: page,
-            size: size,
-            tag: tagId || null
-        });
+    public query(page: number, size: number, tagId?: number, classId?: number): Promise<ItemQueryResponse> {
+        let query = <any>{page: page, size: size};
+        if (tagId) {
+            query['tagId'] = tagId;
+        }
+        if (classId) {
+            query['classId'] = classId;
+        }
+        return this.http.get(`${config.apiBaseUrl}/item`, query);
     }
 
 
@@ -73,8 +76,8 @@ export class ItemApi {
         return this.http.put(`${config.apiBaseUrl}/item/${id}`, newItem);
     }
 
-    public loan(id: number, newLoanedRecord: ItemLendOrder): Promise<Item> {
-        return this.http.put(`${config.apiBaseUrl}/items/loan/${id}`, newLoanedRecord);
+    public lend(order: ItemLendOrder): Promise<Item> {
+        return this.http.put(`${config.apiBaseUrl}/item/lend`, order);
     }
 
     public loanReturn(recordId: string): Promise<ItemLendOrder> {

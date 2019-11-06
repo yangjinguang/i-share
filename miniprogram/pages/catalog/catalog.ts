@@ -19,10 +19,11 @@ Page({
         classesArr: <string[]>[],
         classIndex: 0,
         tagIndex: 0,
-        tagId: 0,
+        filterTagId: 0,
+        filterClassId: 0,
         page: 1,
         searchTimer: 0,
-        searchResult:<Item[]>[]
+        searchResult: <Item[]>[]
     },
     onLoad() {
         this.setData({
@@ -66,27 +67,11 @@ Page({
         });
         this.itemsQuery();
     },
-    tagSwitch(e: any) {
-        const index = e.currentTarget.dataset.tagIndex;
-        if (index !== this.data.tagIndex) {
-            this.setData({
-                tagIndex: index
-            });
-        }
-        let tagId = 0;
-        if (index >= 0) {
-            tagId = this.data.tags[index].id;
-        }
-        this.setData({
-            items: <Item[]>[],
-            page: 1
-        });
-        this.itemsQuery(this.data.page, tagId);
-    },
-    itemsQuery(page?: number, tagId?: number) {
+    itemsQuery(page?: number) {
         page = page || this.data.page;
-        tagId = tagId || this.data.tagId;
-        this.data.itemApi.query(page, 20, tagId).then(result => {
+        let tagId = this.data.filterTagId;
+        let classId = this.data.filterClassId;
+        this.data.itemApi.query(page, 20, tagId, classId).then(result => {
             let items = this.data.items || [];
             if (result.list && result.list.length > 0) {
                 items = items.concat(result.list);
@@ -107,20 +92,28 @@ Page({
         if (index !== this.data.tagIndex) {
             this.setData({
                 tagIndex: index,
-                tagId: tagId
+                filterTagId: tagId,
+                items: <Item[]>[],
+                page: 1
             });
+            this.itemsQuery(this.data.page);
         }
-        this.setData({
-            items: <Item[]>[],
-            page: 1
-        });
-        this.itemsQuery(this.data.page, tagId);
     },
     bindClassFilterChange(e: WxBindEvent) {
-        console.log(e);
-        this.setData({
-            classIndex: e.detail.value
-        });
+        const index = e.detail.value;
+        let classId = 0;
+        if (index > 0) {
+            classId = this.data.classes[index - 1].id;
+        }
+        if (index !== this.data.classIndex) {
+            this.setData({
+                classIndex: e.detail.value,
+                filterClassId: classId,
+                items: <Item[]>[],
+                page: 1
+            });
+            this.itemsQuery(this.data.page);
+        }
     },
     toLoan(e: WxBindEvent) {
         wx.navigateTo({

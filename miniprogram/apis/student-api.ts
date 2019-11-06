@@ -13,6 +13,10 @@ export class StudentApi {
         return this.http.get(`${config.apiBaseUrl}/student/${studentId}`);
     }
 
+    public getMy(): Promise<Student[]> {
+        return this.http.get(`${config.apiBaseUrl}/student/my`);
+    }
+
     public getByClass(classId: number): Promise<Student[]> {
         return this.http.get(`${config.apiBaseUrl}/student/by-class-id/${classId}`);
     }

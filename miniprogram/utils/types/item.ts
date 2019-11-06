@@ -8,6 +8,7 @@ export interface Item {
     classId?: number;
     coverUrl: string;
     desc: string;
+    status:number;
     uploadUserId?: number;
     createdAt?: string;
     createdAtView?: string;
@@ -18,4 +19,5 @@ export interface Item {
     tagsView?: string;
     iClass?: Class;
     classView?: string;
+    lend: boolean
 }

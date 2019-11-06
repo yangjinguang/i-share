@@ -37,10 +37,10 @@
 
 <view class="item-controls mgr-controls" wx:if="{{from!==1}}">
     <button class="weui-btn mini-btn" type="default" size="mini" bindtap="itemEdit">编辑</button>
-    <button class="weui-btn mini-btn" type="default" size="mini" bindtap="itemLoanCancel" disabled="{{!item.loaned}}">归还</button>
+    <button class="weui-btn mini-btn" type="default" size="mini" bindtap="itemLoanCancel" disabled="{{!item.lend}}">归还</button>
     <button class="weui-btn mini-btn" type="warn" size="mini" bindtap="itemDelete">删除</button>
 </view>
 
 <view class="item-controls" wx:if="{{from===1}}">
-    <button class="weui-btn mini-btn" type="default" size="mini" bindtap="itemLoan" disabled="{{item.loaned}}">借阅</button>
+    <button class="weui-btn mini-btn" type="default" size="mini" bindtap="itemLoan" disabled="{{item.lend}}">借阅</button>
 </view>

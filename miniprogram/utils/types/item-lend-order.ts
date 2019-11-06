@@ -6,14 +6,14 @@ export interface ItemLendOrder {
     id: number;
     itemId: number;
     userId: number;
-    childId: number;
+    studentId: number;
     status: number;
     createdAt: Date;
     updatedAt: Date;
 
     item: Item;
     user: User;
-    child: Student;
+    student: Student;
     beginEndStr: string;
     statusView: string
 }

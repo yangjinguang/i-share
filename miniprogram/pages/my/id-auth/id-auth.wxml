@@ -1,0 +1,63 @@
+<form bindsubmit="formSubmit">
+    <view class="weui-cells">
+        <view class="weui-cell weui-cell_select">
+            <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                <view class="weui-label">角色</view>
+            </view>
+            <view class="weui-cell__bd">
+                <picker name="role" bindchange="bindRoleChange" value="{{rolesObj[roleIndex].index}}"
+                        range="{{rolesArr}}">
+                    <view class="weui-select weui-select_in-select-after">{{rolesObj[roleIndex].text}}</view>
+                </picker>
+            </view>
+        </view>
+<!--        <view class="weui-cell">-->
+<!--            <view class="weui-cell__hd weui-cell__hd_in-select-after">-->
+<!--                <view class="weui-label">角色</view>-->
+<!--            </view>-->
+<!--            <view class="weui-cell__bd">-->
+<!--                <picker name="role" bindchange="bindRoleChange" value="{{rolesObj[roleIndex].index}}"-->
+<!--                        range="{{rolesArr}}">-->
+<!--                    <view class="weui-select weui-select_in-select-after">{{rolesObj[roleIndex].text}}</view>-->
+<!--                </picker>-->
+<!--            </view>-->
+<!--        </view>-->
+    </view>
+    <view class="weui-cells">
+        <view class="weui-cell weui-cell_select">
+            <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                <view class="weui-label">班级</view>
+            </view>
+            <view class="weui-cell__bd">
+                <picker mode="multiSelector" name="class"
+                        bindcolumnchange="bindClassColumnChange"
+                        bindchange="bindClassChange"
+                        value="{{classIndex}}"
+                        range="{{classArr}}">
+                    <view class="weui-select weui-select_in-select-after">
+                        {{classArr[0][classIndex[0]]}} {{classArr[1][classIndex[1]]}}
+                    </view>
+                </picker>
+            </view>
+        </view>
+        <view class="weui-cell" wx:if="{{roleIndex==0}}">
+            <view class="weui-cell__hd">
+                <view class="weui-label">孩子姓名</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input name="studentName" class="weui-input" placeholder="请输入孩子真实姓名"/>
+            </view>
+        </view>
+        <view class="weui-cell" wx:if="{{roleIndex==0}}">
+            <view class="weui-cell__hd">
+                <view class="weui-label">关系</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input name="relation" class="weui-input" placeholder="与孩子的关系"/>
+            </view>
+        </view>
+    </view>
+    <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" form-type="submit">提交</button>
+    </view>
+</form>

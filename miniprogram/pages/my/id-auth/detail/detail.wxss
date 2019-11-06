@@ -1,0 +1,6 @@
+.id-auth-detail {
+    padding: 20rpx 0;
+}
+.form-static-group .form-label {
+    width: 160rpx;
+}
