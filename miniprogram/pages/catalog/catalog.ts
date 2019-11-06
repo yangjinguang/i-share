@@ -20,7 +20,9 @@ Page({
         classIndex: 0,
         tagIndex: 0,
         tagId: 0,
-        page: 1
+        page: 1,
+        searchTimer: 0,
+        searchResult:<Item[]>[]
     },
     onLoad() {
         this.setData({
@@ -95,14 +97,6 @@ Page({
             });
         });
     },
-    toDetail(e: any) {
-        const id = e.currentTarget.dataset.itemId;
-        if (id) {
-            wx.navigateTo({
-                url: '/pages/item/detail/detail?id=' + id
-            });
-        }
-    },
     bindTagFilterChange(e: WxBindEvent) {
         const index = e.detail.value;
 
@@ -155,7 +149,17 @@ Page({
     },
     inputTyping(e: any) {
         this.setData({
-            inputVal: e.detail.value
+            searchTimer: new Date().getTime()
         });
-    }
+        setTimeout(() => {
+            if (new Date().getTime() - this.data.searchTimer >= 500) {
+                this.data.itemApi.search(e.detail.value).then(result => {
+                    this.setData({
+                        searchResult: result,
+                        inputVal: e.detail.value
+                    });
+                });
+            }
+        }, 500);
+    },
 });

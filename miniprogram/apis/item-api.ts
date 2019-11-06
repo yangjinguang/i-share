@@ -36,6 +36,11 @@ export class ItemApi {
         return this.http.post(`${config.apiBaseUrl}/item`, newItem);
     }
 
+    public search(s: string): Promise<Item[]> {
+        return this.http.get(`${config.apiBaseUrl}/item/search`, {s: s});
+    }
+
+
     public query(page: number, size: number, tagId?: number): Promise<ItemQueryResponse> {
         return this.http.get(`${config.apiBaseUrl}/item`, {
             page: page,
@@ -43,7 +48,7 @@ export class ItemApi {
             tag: tagId || null
         });
     }
-  
+
 
     public queryMgr(page: number, size: number): Promise<ItemQueryResponse> {
         return this.http.get(`${config.apiBaseUrl}/item/mgr`, {

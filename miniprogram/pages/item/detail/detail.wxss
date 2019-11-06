@@ -69,3 +69,6 @@
 .weui-btn+.weui-btn {
     margin-top: 0;
 }
+.weui-media-box__desc {
+    display: block;
+}
