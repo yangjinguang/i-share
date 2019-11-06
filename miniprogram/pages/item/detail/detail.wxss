@@ -1,0 +1,71 @@
+.item-header {
+    display: flex;
+    padding: 40rpx;
+}
+.item-header_cover {
+    width: 200rpx;
+    height: 240rpx;
+    margin-right: 10px;
+}
+.item-header_cover image {
+    width: 100%;
+    height: 100%;
+}
+.item-header_title {
+    flex: 1;
+    padding: 20rpx;
+}
+.item-header_title_title {
+    font-size: 40rpx;
+    margin-bottom: 10px;
+}
+.item-header_title_class {
+    font-size: 24rpx;
+    color: #063c8e;
+    margin-bottom: 10px;
+}
+.tag-list {
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.tag-block {
+    height: 20px;
+    display: flex;
+    background-color: #07c160;
+    color: #ffffff;
+    border-radius: 5px;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.tag-block .tag-text {
+    padding: 0 10px;
+    font-size: 25rpx;
+    flex: 1;
+}
+
+.item-controls {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 20rpx;
+}
+.item-controls button {
+    width: 30%;
+}
+.item-controls.mgr-controls button {
+    width: 25%;
+}
+.item-controls button:not(:first-child) {
+}
+
+.weui-btn+.weui-btn {
+    margin-top: 0;
+}

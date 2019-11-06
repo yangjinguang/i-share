@@ -1,0 +1,59 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/share/share",
+    "pages/catalog/catalog",
+    "pages/my/my",
+    "pages/my/todo/todo",
+    "pages/my/class-mgr/class-mgr",
+    "pages/my/class-mgr/list/list",
+    "pages/my/class-mgr/create/create",
+    "pages/my/student-mgr/student-mgr",
+    "pages/my/student-mgr/create/create",
+    "pages/my/tags-mgr/tags-mgr",
+    "pages/my/tags-mgr/create/create",
+    "pages/my/items-mgr/items-mgr",
+    "pages/item/upload/upload",
+    "pages/item/detail/detail",
+    "pages/item/loan/loan",
+    "pages/item/loan-detail/loan-detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#15AABF",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "white"
+  },
+  "style": "v2",
+  "tabBar": {
+    "color": "#ACACAD",
+    "selectedColor": "#15AABF",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "icons/home.png",
+        "selectedIconPath": "icons/home-active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/share/share",
+        "iconPath": "icons/compass.png",
+        "selectedIconPath": "icons/compass-active.png",
+        "text": "动态"
+      },
+      {
+        "pagePath": "pages/catalog/catalog",
+        "iconPath": "icons/th.png",
+        "selectedIconPath": "icons/th-active.png",
+        "text": "书架"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "icons/user.png",
+        "selectedIconPath": "icons/user-active.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

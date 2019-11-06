@@ -1,0 +1,13 @@
+<form bindsubmit="formSubmit">
+    <view class="weui-cells__title">姓名</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+            <view class="weui-cell__bd">
+                <input class="weui-input" name="name" value="{{name}}" placeholder="请输入孩子姓名"/>
+            </view>
+        </view>
+    </view>
+    <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" form-type="submit">提交</button>
+    </view>
+</form>

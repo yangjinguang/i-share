@@ -1,0 +1,21 @@
+<view class="items-list">
+    <view class="items-list-title">
+        <text>图书列表</text>
+        <image src="/icons/plus-square.png" bindtap="itemUpload"></image>
+    </view>
+    <view class="items-list-body">
+        <view class="items-grid">
+            <view class="item-cell" hover-class="item-cell_active"
+                  wx:for="{{items}}"
+                  wx:key="{{id}}"
+                  data-item-id="{{item.id}}"
+                  bindtap="itemDetail"
+                  bindlongpress="itemAction">
+                <image class="item-cell_cover" mode="aspectFill"
+                       src="{{item.coverUrl||'/images/demo-cover.jpg'}}"></image>
+                <view class="item-cell_title">{{item.title||'未命名'}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+

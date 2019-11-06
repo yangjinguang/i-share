@@ -1,0 +1,101 @@
+.my-banner {
+    padding: 20rpx 40rpx;
+    height: 140rpx;
+    display: flex;
+    align-items: center;
+}
+.my-banner .weui-panel__bd {
+    width: 100%;
+}
+
+.userinfo-group {
+    width: 100%;
+    display: flex;
+
+}
+
+.userinfo-avatar {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 20rpx;
+}
+
+.userinfo-body {
+    flex: 1;
+    padding: 0 20rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.userinfo-nickname {
+    color: #333333;
+    font-size: 30rpx;
+    margin-bottom: 10rpx;
+}
+
+.userinfo-role-list {
+    display: flex;
+    align-items: center;
+}
+
+.userinfo-role-list text {
+    color: #ffffff;
+    height: 40rpx;
+    padding: 0 20rpx;
+    font-size: 20rpx;
+    background-color: #0f6e7d;
+    border-radius: 8rpx;
+    line-height: 40rpx;
+}
+
+.userinfo-role-list text:not(:last-child) {
+    margin-right: 20rpx;
+}
+
+.user-edit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.my-actions .weui-panel__bd {
+    max-width: 100%;
+    display: flex;
+    padding: 20rpx 10rpx;
+    justify-content: space-between;
+}
+
+.my-action-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20rpx;
+}
+
+.my-action-item:not(:last-child) {
+    /*margin-right: 20rpx;*/
+}
+
+.my-action-item_icon {
+    width: 80rpx;
+    height: 80rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-bottom: 8px;
+}
+
+.my-action-item image {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.my-action-item text {
+    font-size: 30rpx;
+    color: #333;
+}
+.weui-cell:before {
+    left: 52px;
+}

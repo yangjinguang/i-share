@@ -1,0 +1,102 @@
+<form bindsubmit="formSubmit">
+    <view class="weui-cells__title">标题</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+            <view class="weui-cell__bd">
+                <input class="weui-input" name="title" value="{{title}}" placeholder="请输入标题"/>
+            </view>
+        </view>
+    </view>
+    <view class="weui-cells__title">类型</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_select">
+            <view class="weui-cell__bd">
+                <picker bindchange="bindTypeChange" name="type" value="{{typeIndex}}" range="{{types}}">
+                    <view class="weui-select">{{types[typeIndex]}}</view>
+                </picker>
+            </view>
+        </view>
+    </view>
+    <view class="weui-cells__title">班级</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_select">
+            <view class="weui-cell__bd">
+                <picker mode="multiSelector" name="class"
+                        bindcolumnchange="bindClassColumnChange"
+                        bindchange="bindClassChange"
+                        value="{{classIndex}}"
+                        range="{{classArr}}">
+                    <view class="weui-select">
+                        {{classArr[0][classIndex[0]]}} {{classArr[1][classIndex[1]]}}
+                    </view>
+                </picker>
+            </view>
+        </view>
+    </view>
+    <view class="weui-cells__title">封面</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+            <view class="weui-uploader">
+                <view class="weui-uploader__bd">
+                    <view class="weui-uploader__files" id="uploaderFiles">
+                        <view class="weui-uploader__file {{selectedCover.success?'':'weui-uploader__file_status'}}"
+                              wx:if="{{selectedCover.tempPath}}"
+                              bindtap="chooseImage">
+                            <image class="weui-uploader__img" src="{{selectedCover.tempPath}}"
+                                   mode="aspectFill"></image>
+                            <view class="weui-uploader__file-content">
+                                <view wx:if="{{!selectedCover.completed}}">
+                                    {{selectedCover.progress}}%
+                                </view>
+                                <icon wx:if="{{selectedCover.completed&&!selectedCover.success}}" type="warn"
+                                      size="23"
+                                      color="#F43530"></icon>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="weui-uploader__input-box" wx:if="{{!selectedCover.tempPath}}">
+                        <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="weui-cells__title">介绍</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+            <view class="weui-cell__bd">
+                <textarea class="weui-textarea" name="desc" value="{{desc}}" placeholder="请输入介绍"
+                          style="height: 3.3em"></textarea>
+                <view class="weui-textarea-counter">0/100</view>
+            </view>
+        </view>
+    </view>
+    <view class="weui-cells__title">标签</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+            <view class="weui-cell__bd tag-list">
+                <view class="tag-block" wx:for="{{selectedTags}}" wx:key="{{id}}" wx:for-index="idx">
+                    <text class="tag-text">{{item.name}}</text>
+                    <view data-tag-index="{{idx}}" class="tag-delete-btn" bindtap="deleteTag">
+                        <image src="/icons/trash-alt-white.png"></image>
+                    </view>
+                </view>
+
+                <picker bindchange="bindTagsChange" value="{{tagIndex}}" range="{{tagArr}}">
+                    <view class="tag-block tag-add-btn">
+                        <text class="tag-text">+ 添加</text>
+                    </view>
+                    <!--                    <view class="weui-select">-->
+                    <!--                        <span wx:for="{{selectedTags}}" wx:key="*this">-->
+                    <!--                            {{tagArr[item]}}-->
+                    <!--                            <span wx:if="{{index<selectedTags.length-1}}">,</span>-->
+                    <!--                        </span>-->
+                    <!--                    </view>-->
+                </picker>
+            </view>
+        </view>
+    </view>
+    <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" form-type="submit">提交</button>
+    </view>
+</form>

@@ -1,0 +1,40 @@
+.tag-list {
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.tag-block {
+    height: 28px;
+    display: flex;
+    background-color: #07c160;
+    color: #ffffff;
+    border-radius: 5px;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.tag-block .tag-text {
+    padding: 0 10px;
+    font-size: 25rpx;
+    flex: 1;
+}
+
+.tag-block .tag-delete-btn {
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid #fff;
+
+}
+
+.tag-block .tag-delete-btn image {
+    width: 12px;
+    height: 15px;
+}
+.tag-add-btn {
+    border:1px dashed #ddd;
+    background-color: #ffffff;
+    color: #07c160;
+}

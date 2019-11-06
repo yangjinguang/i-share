@@ -1,0 +1,140 @@
+<view class="page">
+    <view class="weui-panel weui-panel_access my-banner">
+        <view class="weui-panel__bd">
+            <view class="userinfo-group">
+                <image class="userinfo-avatar" src="{{profile.avatarUrl||'/icons/user-circle.png'}}" mode="cover"></image>
+                <view class="userinfo-body">
+                    <text class="userinfo-nickname">{{profile.nickName||'未登录'}}</text>
+                    <view class="userinfo-role-list">
+                        <text wx:for="{{roles}}" wx:key="{{item}}">{{item}}</text>
+                    </view>
+                </view>
+                <view class="user-edit-btn">
+                    <button open-type="getUserInfo"
+                            class="weui-btn"
+                            type="primary"
+                            wx:if="{{!isLogin}}"
+                            bindgetuserinfo="authSuccess"
+                            size="mini">
+                        登录
+                    </button>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="weui-panel weui-panel_access my-actions">
+        <view class="weui-panel__bd">
+            <navigator url="/pages/share/create/create" class="my-action-item">
+                <view class="my-action-item_icon" style="background-color: #15AABF;">
+                    <image src="/icons/calendar-alt-white.png"></image>
+                </view>
+                <text>每日分享</text>
+            </navigator>
+            <navigator url="/pages/my/id-auth/id-auth" class="my-action-item">
+                <view class="my-action-item_icon" style="background-color: #FFA000">
+                    <image src="/icons/id-card-alt-white.png"></image>
+                </view>
+                <text>身份认证</text>
+            </navigator>
+            <navigator class="my-action-item">
+                <view class="my-action-item_icon" style="background-color: #388E3C">
+                    <image src="/icons/bell-white.png"></image>
+                </view>
+                <text>我的通知</text>
+            </navigator>
+            <navigator url="/pages/my/favorite/favorite" class="my-action-item">
+                <view class="my-action-item_icon" style="background-color: #FF6D00">
+                    <image src="/icons/bell-white.png"></image>
+                </view>
+                <text>我的收藏</text>
+            </navigator>
+        </view>
+    </view>
+    <view class="weui-cells__title">我的资料</view>
+    <view class="weui-cells weui-cells_after-title">
+        <navigator url="/pages/my/todo/todo" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd weui-cell__icon">
+                <image src="/icons/clipboard-list-white.png"></image>
+            </view>
+            <view class="weui-cell__bd">待办</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access text-warn">{{todoCount}}</view>
+        </navigator>
+        <navigator url="/pages/my/profile/profile" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd weui-cell__icon">
+                <image src="/icons/file-user.png"></image>
+            </view>
+            <view class="weui-cell__bd">个人资料</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+    </view>
+    <view class="weui-cells__title">我的列表</view>
+    <view class="weui-cells weui-cells_after-title">
+        <navigator url="/pages/my/my-items/my-items" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd weui-cell__icon">
+                <image src="/icons/books.png"></image>
+            </view>
+            <view class="weui-cell__bd">我的借阅</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+        <navigator url="/pages/my/my-share/my-share" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd weui-cell__icon">
+                <image src="/icons/compass.png"></image>
+            </view>
+            <view class="weui-cell__bd">我的分享</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+    </view>
+    <view class="weui-cells__title" wx:if="{{isAdmin||isTeacher}}">后台管理</view>
+    <view class="weui-cells weui-cells_after-title">
+        <navigator url="/pages/my/class-mgr/class-mgr"
+                   wx:if="{{isAdmin||isTeacher}}"
+                   class="weui-cell weui-cell_access"
+                   hover-class="weui-cell_active">
+            <view class="weui-cell__hd weui-cell__icon">
+                <image src="/icons/sitemap.png"></image>
+            </view>
+            <view class="weui-cell__bd">班级管理</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+        <!--        <navigator url="/pages/my/children-mgr/children-mgr"-->
+        <!--                   wx:if="{{isTeacher}}"-->
+        <!--                   class="weui-cell weui-cell_access"-->
+        <!--                   hover-class="weui-cell_active">-->
+        <!--            <view class="weui-cell__hd weui-cell__icon">-->
+        <!--                <image src="/icons/user-class.png"></image>-->
+        <!--            </view>-->
+        <!--            <view class="weui-cell__bd">我的班级</view>-->
+        <!--            <view class="weui-cell__ft weui-cell__ft_in-access"></view>-->
+        <!--        </navigator>-->
+        <navigator url="/pages/my/tags-mgr/tags-mgr"
+                   wx:if="{{isAdmin}}"
+                   class="weui-cell weui-cell_access"
+                   hover-class="weui-cell_active">
+            <view class="weui-cell__hd weui-cell__icon">
+                <image src="/icons/tags.png"></image>
+            </view>
+            <view class="weui-cell__bd">标签管理</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+        <navigator url="/pages/my/items-mgr/items-mgr"
+                   wx:if="{{isTeacher}}"
+                   class="weui-cell weui-cell_access"
+                   hover-class="weui-cell_active">
+            <view class="weui-cell__hd weui-cell__icon">
+                <image src="/icons/books-cog.png"></image>
+            </view>
+            <view class="weui-cell__bd">图书管理</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+        <navigator url="/pages/my/index-mgr/index-mgr"
+                   wx:if="{{isAdmin}}"
+                   class="weui-cell weui-cell_access"
+                   hover-class="weui-cell_active">
+            <view class="weui-cell__hd weui-cell__icon">
+                <image src="/icons/books-cog.png"></image>
+            </view>
+            <view class="weui-cell__bd">首页管理</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+    </view>
+</view>

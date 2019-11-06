@@ -1,0 +1,46 @@
+<view class="weui-panel weui-panel_access">
+    <view class="weui-panel__bd item-header">
+        <view class="item-header_cover">
+            <image mode="aspectFill" src="{{item.coverUrl}}"></image>
+        </view>
+        <view class="item-header_title">
+            <view class="item-header_title_title">
+                {{item.title}}
+            </view>
+            <view class="item-header_title_class">
+                {{item.iClass.gradeName}} {{item.iClass.name}}
+            </view>
+            <view class="item-header_title_tags tag-list">
+                <view class="tag-block" wx:for="{{item.tags}}" wx:for-item="tag" wx:key="{{id}}" wx:for-index="idx">
+                    <text class="tag-text">{{tag.name}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="weui-panel weui-panel_access">
+    <view class="weui-panel__hd">简介</view>
+    <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_text">
+            <view class="weui-media-box__desc">{{item.desc}}</view>
+        </view>
+
+    </view>
+</view>
+
+<view class="weui-panel weui-panel_access">
+    <view class="weui-panel__hd">精彩分享</view>
+    <view class="weui-panel__bd">
+    </view>
+</view>
+
+<view class="item-controls mgr-controls" wx:if="{{from!==1}}">
+    <button class="weui-btn mini-btn" type="default" size="mini" bindtap="itemEdit">编辑</button>
+    <button class="weui-btn mini-btn" type="default" size="mini" bindtap="itemLoanCancel" disabled="{{!item.loaned}}">归还</button>
+    <button class="weui-btn mini-btn" type="warn" size="mini" bindtap="itemDelete">删除</button>
+</view>
+
+<view class="item-controls" wx:if="{{from===1}}">
+    <button class="weui-btn mini-btn" type="default" size="mini" bindtap="itemLoan" disabled="{{item.loaned}}">借阅</button>
+</view>

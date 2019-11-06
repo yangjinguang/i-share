@@ -1,0 +1,31 @@
+/**app.wxss**/
+@import 'weui/weui.wxss';
+
+page{
+  background-color: #EDEDED;
+  font-size: 16px;
+  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+}
+
+.weui-cell__icon {
+  /*display: flex;*/
+  /*align-items: center;*/
+  /*flex-direction: column;*/
+  /*justify-content: center;*/
+}
+
+.weui-cell__icon image {
+  margin-right: 16px;
+  vertical-align: middle;
+  width:20px;
+  height: 20px;
+}
+
+.content-empty {
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
+  font-size: 30rpx;
+}

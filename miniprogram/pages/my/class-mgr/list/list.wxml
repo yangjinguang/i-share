@@ -1,0 +1,23 @@
+<view class="tags-list">
+    <view class="tags-list-title">
+        <text>{{gradeName}}</text>
+        <image wx:if="{{profile.isAdmin}}" src="/icons/plus-square.png" bindtap="classCreate"></image>
+    </view>
+    <view class="tags-list-body">
+        <view class="weui-cells__title">年级列表</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell" wx:if="{{!classList||classList.length<=0}}">
+                <view class="weui-cell__bd weui-cell__no-data">暂无数据</view>
+            </view>
+            <navigator url="/pages/my/student-mgr/student-mgr?classId={{item.id}}&className={{item.name}}"
+                       class="weui-cell weui-cell_access"
+                       wx:for="{{classList}}"
+                       wx:key="{{item.id}}"
+                       data-class-id="{{item.id}}"
+                       bindlongpress="classAction"
+                       hover-class="weui-cell_active">
+                <view class="weui-cell__bd">{{item.name}}</view>
+            </navigator>
+        </view>
+    </view>
+</view>
