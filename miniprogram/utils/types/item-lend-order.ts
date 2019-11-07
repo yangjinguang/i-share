@@ -1,12 +1,14 @@
 import {Item} from './item';
 import {User} from './user';
 import {Student} from './student';
+import {Class} from './class';
 
 export interface ItemLendOrder {
     id: number;
     itemId: number;
     userId: number;
     studentId: number;
+    classId: number;
     status: number;
     createdAt: Date;
     updatedAt: Date;
@@ -14,6 +16,8 @@ export interface ItemLendOrder {
     item: Item;
     user: User;
     student: Student;
+    iClass: Class;
+    studentClass: Class;
     beginEndStr: string;
     statusView: string
 }

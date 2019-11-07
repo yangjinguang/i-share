@@ -1,53 +1,58 @@
-page {
-    background-color: #ffffff;
-}
+/*page {*/
+/*    background-color: #ffffff;*/
+/*}*/
 
 .loan-record-detail {
-    padding: 15px;
+    padding: 20rpx 0;
 }
 
-.item-detail {
-    display: flex;
-    align-items: center;
-    background-color: #f6f6f6;
-    padding: 10px 15px;
-    margin-bottom: 15px;
-    border-radius: 4px;
+.form-static-group .form-label {
+    width: 160rpx;
 }
 
-.item-detail_cover {
-    width: 100rpx;
-    height: 130rpx;
-    margin-right: 10px;
-}
 
-.item-detail_cover image {
-    width: 100%;
-    height: 100%;
-}
+/*.item-detail {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    background-color: #f6f6f6;*/
+/*    padding: 10px 15px;*/
+/*    margin-bottom: 15px;*/
+/*    border-radius: 4px;*/
+/*}*/
 
-.item-detail_title {
-    display: flex;
-    flex-direction: column;
-    font-size: 30rpx;
-}
+/*.item-detail_cover {*/
+/*    width: 100rpx;*/
+/*    height: 130rpx;*/
+/*    margin-right: 10px;*/
+/*}*/
 
-.item-detail_title-class {
-    color: #238cff;
-}
+/*.item-detail_cover image {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*}*/
 
-.user-info {
-    padding: 15px 0;
-    border-top: 1px solid #dddddd;
-}
+/*.item-detail_title {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    font-size: 30rpx;*/
+/*}*/
 
-.user-info_row {
-    display: flex;
-    align-items: center;
-    font-size: 30rpx;
-}
+/*.item-detail_title-class {*/
+/*    color: #238cff;*/
+/*}*/
 
-.user-info_label {
-    color: #999999;
-    width: 150rpx;
-}
+/*.user-info {*/
+/*    padding: 15px 0;*/
+/*    border-top: 1px solid #dddddd;*/
+/*}*/
+
+/*.user-info_row {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    font-size: 30rpx;*/
+/*}*/
+
+/*.user-info_label {*/
+/*    color: #999999;*/
+/*    width: 150rpx;*/
+/*}*/

@@ -4,6 +4,7 @@ import {ItemTag} from '../utils/types/item-tag';
 import {Item} from '../utils/types/item';
 import {ItemQueryResponse} from '../utils/types/item-query-response';
 import {ItemLendOrder} from '../utils/types/item-lend-order';
+import {LendOrderHandleBody} from '../utils/types/lend-order-handle-body';
 
 export class ItemApi {
     private http: HttpClient;
@@ -84,19 +85,15 @@ export class ItemApi {
         return this.http.put(`${config.apiBaseUrl}/items/return/${recordId}`);
     }
 
-    public getLoanedRecords(statusList: number[]): Promise<ItemLendOrder[]> {
-        return this.http.get(`${config.apiBaseUrl}/items/loaned`, {status: statusList.join(',')});
-    }
-
     public cancelItemLoan(id: number): Promise<string> {
         return this.http.delete(`${config.apiBaseUrl}/items/loanRecord/cancel/${id}`);
     }
 
-    public getLoanedRecord(recordId: string): Promise<ItemLendOrder> {
-        return this.http.get(`${config.apiBaseUrl}/items/loanRecord/${recordId}`);
+    public getLendDetail(orderId: number): Promise<ItemLendOrder> {
+        return this.http.get(`${config.apiBaseUrl}/item/lend/detail/${orderId}`);
     }
 
-    public loanedRecordStatus(recordId: string, status: number): Promise<ItemLendOrder> {
-        return this.http.put(`${config.apiBaseUrl}/items/loanRecord/status/${recordId}/${status}`);
+    public lendOrderHandle(body: LendOrderHandleBody): Promise<ItemLendOrder> {
+        return this.http.put(`${config.apiBaseUrl}/item/lend/handle`, body);
     }
 }

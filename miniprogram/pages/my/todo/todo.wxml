@@ -2,25 +2,25 @@
     <view wx:if="{{itemLendOrders&&itemLendOrders.length>0}}">
         <view class="weui-cells__title">图书借阅申请</view>
         <view class="weui-cells weui-cells_after-title">
-            <navigator wx:for="{{itemLoanedRecords}}" wx:key="{{item.id}}"
+            <navigator wx:for="{{itemLendOrders}}" wx:key="{{item.id}}"
                        url="/pages/item/loan-detail/loan-detail?id={{item.id}}" class="weui-cell weui-cell_access"
                        hover-class="weui-cell_active">
-                <view class="weui-cell__bd">{{item.user.name}}的借阅请求</view>
+                <view class="weui-cell__bd">{{item.userName}}的借阅请求</view>
                 <view class="weui-cell__ft weui-cell__ft_in-access"></view>
             </navigator>
         </view>
     </view>
-    <view wx:if="{{itemLendOrders&&itemLendOrders.length>0}}">
-        <view class="weui-cells__title">图书归还申请</view>
-        <view class="weui-cells weui-cells_after-title">
-            <navigator wx:for="{{itemLoanReturnRecords}}" wx:key="{{item.id}}"
-                       url="/pages/item/loan-detail/loan-detail?id={{item.id}}" class="weui-cell weui-cell_access"
-                       hover-class="weui-cell_active">
-                <view class="weui-cell__bd">{{item.user.name}}的归还请求</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </navigator>
-        </view>
-    </view>
+<!--    <view wx:if="{{itemLendOrders&&itemLendOrders.length>0}}">-->
+<!--        <view class="weui-cells__title">图书归还申请</view>-->
+<!--        <view class="weui-cells weui-cells_after-title">-->
+<!--            <navigator wx:for="{{itemLoanReturnRecords}}" wx:key="{{item.id}}"-->
+<!--                       url="/pages/item/loan-detail/loan-detail?id={{item.id}}" class="weui-cell weui-cell_access"-->
+<!--                       hover-class="weui-cell_active">-->
+<!--                <view class="weui-cell__bd">{{item.userName}}的归还请求</view>-->
+<!--                <view class="weui-cell__ft weui-cell__ft_in-access"></view>-->
+<!--            </navigator>-->
+<!--        </view>-->
+<!--    </view>-->
 
     <view wx:if="{{idAuthOrders&&idAuthOrders.length>0}}">
         <view class="weui-cells__title">身份认证申请</view>

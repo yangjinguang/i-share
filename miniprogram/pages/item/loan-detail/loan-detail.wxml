@@ -1,37 +1,106 @@
 <view class="loan-record-detail">
-    <view class="item-detail">
-        <view class="item-detail_cover">
-            <image src="{{itemLoanedRecord.item.coverSrc}}" mode="aspectFill"></image>
-        </view>
-        <view class="item-detail_title">
-            <view class="item-detail_title-title">{{itemLoanedRecord.item.title}}</view>
-            <view class="item-detail_title-class">{{itemLoanedRecord.item.grade.text}}{{itemLoanedRecord.item.class.text}}
+    <!--    <view class="item-detail">-->
+    <!--        <view class="item-detail_cover">-->
+    <!--            <image src="{{itemLoanedRecord.item.coverSrc}}" mode="aspectFill"></image>-->
+    <!--        </view>-->
+    <!--        <view class="item-detail_title">-->
+    <!--            <view class="item-detail_title-title">{{itemLoanedRecord.item.title}}</view>-->
+    <!--            <view class="item-detail_title-class">{{itemLoanedRecord.item.grade.text}}{{itemLoanedRecord.item.class.text}}-->
+    <!--            </view>-->
+    <!--        </view>-->
+    <!--    </view>-->
+    <!--    <view class="user-info">-->
+    <!--        <view class="user-info_row">-->
+    <!--            <view class="user-info_label">借阅人:</view>-->
+    <!--            <view class="user-info_value">{{itemLoanedRecord.user.name}}</view>-->
+    <!--        </view>-->
+    <!--        <view class="user-info_row">-->
+    <!--            <view class="user-info_label">所属班级:</view>-->
+    <!--            <view class="user-info_value">{{itemLoanedRecord.user.grade.text}}{{itemLoanedRecord.user.class.text}}</view>-->
+    <!--        </view>-->
+    <!--        <view class="user-info_row">-->
+    <!--            <view class="user-info_label">孩子姓名:</view>-->
+    <!--            <view class="user-info_value">{{itemLoanedRecord.child.name}}</view>-->
+    <!--        </view>-->
+    <!--    </view>-->
+    <!--    <view class="loan-control" wx:if="{{itemLoanedRecord.status === 1}}">-->
+    <!--        <view class="item-control">-->
+    <!--            <button class="weui-btn" type="primary" bindtap="agree">同意</button>-->
+    <!--            <button class="weui-btn" type="warn" bindtap="reject">驳回</button>-->
+    <!--        </view>-->
+    <!--    </view>-->
+    <!--    <view class="loan-control" wx:if="{{itemLoanedRecord.status === 5}}">-->
+    <!--        <view class="item-control">-->
+    <!--            <button class="weui-btn" type="primary" bindtap="agreeReturn">确认已归还</button>-->
+    <!--        </view>-->
+    <!--    </view>-->
+    <view class="weui-panel weui-panel_access ">
+        <view class="weui-panel__hd">申请详情</view>
+        <view class="weui-panel__bd form-static">
+            <view class="form-static-group">
+                <view class="form-label">借阅人:</view>
+                <view class="form-control">{{itemLendOrder.userName}}</view>
+            </view>
+            <view class="form-static-group">
+                <view class="form-label">图书:</view>
+                <view class="form-control">{{itemLendOrder.iItem.title}}</view>
+            </view>
+            <view>
+                <view class="form-static-group">
+                    <view class="form-label">图书班级:</view>
+                    <view class="form-control">{{itemLendOrder.studentClass.gradeName}}{{itemLendOrder.studentClass.name}}</view>
+                </view>
+            </view>
+            <view class="form-static-group">
+                <view class="form-label">孩子姓名:</view>
+                <view class="form-control">{{itemLendOrder.iStudent.name}}</view>
+            </view>
+            <view>
+                <view class="form-static-group">
+                    <view class="form-label">孩子班级:</view>
+                    <view class="form-control">{{itemLendOrder.iClass.gradeName}}{{itemLendOrder.iClass.name}}</view>
+                </view>
             </view>
         </view>
     </view>
-    <view class="user-info">
-        <view class="user-info_row">
-            <view class="user-info_label">借阅人:</view>
-            <view class="user-info_value">{{itemLoanedRecord.user.name}}</view>
+    <form bindsubmit="formSubmit">
+        <view class="weui-cells__title">批复</view>
+        <view class="weui-cells weui-cells_after-title">
+            <radio-group bindchange="agreeChange">
+                <label class="weui-cell weui-check__label">
+                    <radio class="weui-check" value="{{true}}"/>
+
+                    <view class="weui-cell__bd">同意</view>
+                    <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{isAgree}}">
+                        <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                    </view>
+                </label>
+                <label class="weui-cell weui-check__label">
+                    <radio class="weui-check" value="{{false}}"/>
+
+                    <view class="weui-cell__bd">驳回</view>
+                    <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{!isAgree}}">
+                        <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                    </view>
+                </label>
+
+            </radio-group>
         </view>
-        <view class="user-info_row">
-            <view class="user-info_label">所属班级:</view>
-            <view class="user-info_value">{{itemLoanedRecord.user.grade.text}}{{itemLoanedRecord.user.class.text}}</view>
+
+        <view wx:if="{{!isAgree}}">
+            <view class="weui-cells__title">驳回原因</view>
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell">
+                    <view class="weui-cell__bd">
+                        <textarea name="rejectMsg" class="weui-textarea" placeholder="请输入驳回原因" style="height: 3.3em"/>
+                        <view class="weui-textarea-counter">0/200</view>
+                    </view>
+                </view>
+            </view>
         </view>
-        <view class="user-info_row">
-            <view class="user-info_label">孩子姓名:</view>
-            <view class="user-info_value">{{itemLoanedRecord.child.name}}</view>
+
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" form-type="submit">提交</button>
         </view>
-    </view>
-    <view class="loan-control" wx:if="{{itemLoanedRecord.status === 1}}">
-        <view class="item-control">
-            <button class="weui-btn" type="primary" bindtap="agree">同意</button>
-            <button class="weui-btn" type="warn" bindtap="reject">驳回</button>
-        </view>
-    </view>
-    <view class="loan-control" wx:if="{{itemLoanedRecord.status === 5}}">
-        <view class="item-control">
-            <button class="weui-btn" type="primary" bindtap="agreeReturn">确认已归还</button>
-        </view>
-    </view>
+    </form>
 </view>
