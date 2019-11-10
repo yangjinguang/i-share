@@ -95,7 +95,7 @@
 </scroll-view>
 <form class="comment-input-group" wx:if="{{commentInputShown}}" bindsubmit="sendComment">
     <view class="commnet-input-group_container">
-        <input focus="true" cursor-spacing="12" name="body"/>
+        <input focus="true" cursor-spacing="12" name="body" placeholder="评论"/>
         <button class="weui-btn"
                 type="primary"
                 form-type="submit"

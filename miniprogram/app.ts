@@ -1,5 +1,6 @@
 // app.ts
 import {User} from './utils/types/user';
+import {CheckLoginStatus, GetProfile} from './utils/login';
 
 export interface IMyApp {
     userInfoReadyCallback?(res: User): void
@@ -14,5 +15,9 @@ export interface IMyApp {
 App<IMyApp>({
     globalData: {},
     onLaunch() {
+        CheckLoginStatus(() => {
+            GetProfile(this, () => {
+            });
+        });
     },
 });

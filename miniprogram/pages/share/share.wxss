@@ -221,10 +221,12 @@ page {
     /*bottom: 0;*/
     /*left: 0;*/
     /*width: 100%;*/
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #dddddd;
-    background-color: #ffffff;
+    /*border-top: 1px solid #ddd;*/
+    /*border-bottom: 1px solid #dddddd;*/
+    /*background-color: #ffffff;*/
+    background-color: #f6f6f6;
     height: 50px;
+    padding: 0 15px;
 }
 
 .commnet-input-group_container {
@@ -232,17 +234,22 @@ page {
     height: 100%;
     display: flex;
     align-items: center;
-    padding: 0 15px;
+
 }
 
 .comment-input-group input {
     flex: 1;
-    font-size: 30rpx;
+    padding: 10rpx;
+    margin-right: 10px;
+    border-radius: 10rpx;
+    font-size: 20rpx;
     color: #333;
+    background-color: #FFFFFF;
 }
 
 .comment-input-group button {
     margin: 0;
-    height: 28px;
-    line-height: 28px;
+    height: 40rpx;
+    line-height: 40rpx;
+    font-size: 20rpx;
 }

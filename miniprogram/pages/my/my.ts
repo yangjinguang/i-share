@@ -27,7 +27,7 @@ Page({
             this.getProfile();
             this.getTodoCount();
         }, () => {
-            console.log('not login')
+            console.log('not login');
             this.setData({
                 isLogin: false,
             });

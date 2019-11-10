@@ -2,7 +2,8 @@ import {ShareMedia} from './share-media';
 import {Student} from './student';
 import {User} from './user';
 import {Item} from './item';
-import {Comment} from './comment';
+import {ShareComment} from '../share-comment';
+import {ShareLike} from '../share-like';
 
 export interface Share {
     id: number;
@@ -12,7 +13,6 @@ export interface Share {
     studentId: number;
     title: string;
     desc: string;
-    likeUserIds: number[];
     createdAt: Date;
     updatedAt: Date;
 
@@ -20,9 +20,9 @@ export interface Share {
     student: Student;
     user: User;
     item: Item;
-    likeUsers: User[];
-    likeUsersView: string;
     liked: boolean;
     timeDiff: string;
-    comments: Comment[];
+
+    comments: ShareComment[];
+    likes: ShareLike[];
 }

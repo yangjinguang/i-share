@@ -6,9 +6,14 @@ import {WxBindEvent} from '../../utils/types/wx-bind-event';
 import {CommentApi} from '../../apis/comment-api';
 import {Class} from '../../utils/types/class';
 import {ClassApi} from '../../apis/class-api';
+import {IMyApp} from '../../app';
+import {User} from '../../utils/types/user';
+
+const app = getApp<IMyApp>();
 
 Page({
     data: {
+        profile: <User>{},
         shareApi: <ShareApi>{},
         commentApi: <CommentApi>{},
         classApi: <ClassApi>{},
@@ -25,13 +30,18 @@ Page({
         filterClassId: 0
     },
     onLoad() {
-        this.setData!({
+        this.setData({
             shareApi: new ShareApi(),
             commentApi: new CommentApi(),
             classApi: new ClassApi()
         });
     },
     onShow() {
+        this.setData({
+            profile: app.globalData.profile,
+        });
+        console.log(app.globalData);
+        console.log(this.data.profile);
         this.getClassTree();
         this.getShares(1);
     },
@@ -76,6 +86,19 @@ Page({
             });
         });
     },
+    getLikes(shareId: number) {
+        this.data.shareApi.getLikes(shareId).then(likes => {
+            this.setData({
+                shares: this.data.shares.map(i => {
+                    if (i.id === shareId) {
+                        i.liked = likes.findIndex(j => j.id === this.data.profile.id) > -1;
+                        i.likes = likes;
+                    }
+                    return i;
+                })
+            });
+        });
+    },
     bindClassFilterChange(e: WxBindEvent) {
         console.log(e.detail.value);
         if (this.data.classIndex === e.detail.value) {
@@ -92,18 +115,20 @@ Page({
         this.getShares(1, classId);
     },
     shareLike(e: WxBindEvent) {
-        this.data.shareApi.like(e.currentTarget.dataset['shareId']).then(result => {
-            this.setData!({
-                shares: this.data.shares.map(i => {
-                    if (i.id === result.id) {
-                        i.likeUserIds = result.likeUserIds;
-                        i.likeUsers = result.likeUsers;
-                        i.likeUsersView = Utils.usersNameStr(i.likeUsers);
-                        i.liked = result.liked;
-                    }
-                    return i;
-                })
-            });
+        let shareId = e.currentTarget.dataset['shareId'];
+        this.data.shareApi.like(shareId).then(() => {
+            this.getLikes(shareId);
+            // this.setData!({
+            //     shares: this.data.shares.map(i => {
+            //         if (i.id === result.id) {
+            //             i.likeUserIds = result.likeUserIds;
+            //             i.likeUsers = result.likeUsers;
+            //             i.likeUsersView = Utils.usersNameStr(i.likeUsers);
+            //             i.liked = result.liked;
+            //         }
+            //         return i;
+            //     })
+            // });
         });
     },
     showCommentInput(e: WxBindEvent) {
@@ -130,14 +155,14 @@ Page({
             });
             return;
         }
-        this.data.shareApi.createComment(selectedShare.id, e.detail.value['body']).then(result => {
-            this.setData!({
-                shares: this.data.shares.map(i => {
-                    if (i.id === result.id) {
-                        i.comments = result.comments;
-                    }
-                    return i;
-                }),
+        this.data.shareApi.comment(selectedShare.id, e.detail.value['body']).then(result => {
+            this.setData({
+                // shares: this.data.shares.map(i => {
+                //     if (i.id === result.shareId) {
+                //         i.comments = result.comments;
+                //     }
+                //     return i;
+                // }),
                 commentInputShown: false,
             });
         });
