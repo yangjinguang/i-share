@@ -35,7 +35,8 @@
     <!--        </view>-->
     <!--    </view>-->
     <view class="weui-panel weui-panel_access ">
-        <view class="weui-panel__hd">申请详情</view>
+        <view class="weui-panel__hd" wx:if="{{itemLendOrder.status===1}}">借书申请</view>
+        <view class="weui-panel__hd" wx:if="{{itemLendOrder.status===5}}">归还申请</view>
         <view class="weui-panel__bd form-static">
             <view class="form-static-group">
                 <view class="form-label">借阅人:</view>
@@ -48,7 +49,9 @@
             <view>
                 <view class="form-static-group">
                     <view class="form-label">图书班级:</view>
-                    <view class="form-control">{{itemLendOrder.studentClass.gradeName}}{{itemLendOrder.studentClass.name}}</view>
+                    <view class="form-control">
+                        {{itemLendOrder.studentClass.gradeName}}{{itemLendOrder.studentClass.name}}
+                    </view>
                 </view>
             </view>
             <view class="form-static-group">
@@ -61,9 +64,21 @@
                     <view class="form-control">{{itemLendOrder.iClass.gradeName}}{{itemLendOrder.iClass.name}}</view>
                 </view>
             </view>
+            <view>
+                <view class="form-static-group">
+                    <view class="form-label">提交时间:</view>
+                    <view class="form-control">{{itemLendOrder.createdAtView}}</view>
+                </view>
+            </view>
+            <view>
+                <view class="form-static-group">
+                    <view class="form-label">状态:</view>
+                    <view class="form-control">{{itemLendOrder.statusView}}</view>
+                </view>
+            </view>
         </view>
     </view>
-    <form bindsubmit="formSubmit">
+    <form bindsubmit="formSubmit" wx:if="{{from===2}}">
         <view class="weui-cells__title">批复</view>
         <view class="weui-cells weui-cells_after-title">
             <radio-group bindchange="agreeChange">
@@ -103,4 +118,22 @@
             <button class="weui-btn" type="primary" form-type="submit">提交</button>
         </view>
     </form>
+</view>
+
+<view class="item-controls mgr-controls" wx:if="{{from===1}}">
+    <button class="weui-btn mini-btn"
+            wx:if="{{itemLendOrder.status===2}}"
+            type="default" size="mini"
+            bindtap="lendReturn">归还
+    </button>
+    <button class="weui-btn mini-btn"
+            wx:if="{{itemLendOrder.status===1}}"
+            type="default" size="mini"
+            bindtap="lendCancel">撤回
+    </button>
+    <button class="weui-btn mini-btn"
+            wx:if="{{itemLendOrder.status===3||itemLendOrder.status===4}}"
+            type="warn" size="mini"
+            bindtap="lendDelete">删除
+    </button>
 </view>

@@ -1,0 +1,64 @@
+<view class="loaned-items">
+    <view class="loaned-items_tabs">
+        <view class="loaned-items_tab {{curTab===1?'active':''}}"
+              data-tab-index="1"
+              bindtap="tagSwitch">待确认
+        </view>
+        <view class="loaned-items_tab {{curTab===2?'active':''}}"
+              data-tab-index="2"
+              bindtap="tagSwitch">阅读中
+        </view>
+        <view class="loaned-items_tab {{curTab===3?'active':''}}"
+              data-tab-index="3"
+              bindtap="tagSwitch">已归还
+        </view>
+    </view>
+    <!--    <view class="loaned-items_list item-list">-->
+    <!--        <view class="item-list_cell"-->
+    <!--              hover-class="item-list_cell-hover"-->
+    <!--              bindtap="itemDetail"-->
+    <!--              data-item-id="{{item.itemId}}"-->
+    <!--              data-record-id="{{item.id}}"-->
+    <!--              bindlongpress="recordAction"-->
+    <!--              wx:for="{{lendOrders}}"-->
+    <!--              wx:key="{{item.id}}">-->
+    <!--            <view class="item-list_cover">-->
+    <!--                <image src="{{item.itemCoverUrl}}" mode="aspectFill"></image>-->
+    <!--            </view>-->
+    <!--            <view class="item-list_detail">-->
+    <!--                <view class="item-list_detail_title">{{item.itemTitle}}</view>-->
+    <!--                <view class="item-list_detail_time">{{item.beginEndStr}}</view>-->
+    <!--            </view>-->
+    <!--            <view class="item-list_loaned-status status-{{item.status}}">-->
+    <!--                <text>{{item.statusView}}</text>-->
+    <!--            </view>-->
+    <!--        </view>-->
+
+    <view class="weui-panel weui-panel_access">
+        <view class="weui-panel__bd">
+            <navigator url="/pages/item/lend-detail/lend-detail?id={{item.id}}"
+                       class="weui-media-box weui-media-box_appmsg"
+                       hover-class="weui-cell_active"
+                       data-item-id="{{item.itemId}}"
+                       data-order-id="{{item.id}}"
+                       bindlongpress="recordAction"
+                       wx:for="{{lendOrders}}"
+                       wx:key="{{item.id}}">
+                <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                    <image mode="aspectFill" class="weui-media-box__thumb" src="{{item.itemCoverUrl}}"/>
+                </view>
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                    <view class="weui-media-box__title">{{item.itemTitle}}</view>
+                    <view class="weui-media-box__desc">
+                        <view class="lend-order-desc-row">
+                            <view class="order-label">借阅时间:</view>
+                            <view class="order-control">{{item.createdAtView}}</view>
+                        </view>
+                    </view>
+                </view>
+            </navigator>
+        </view>
+    </view>
+
+    <!--    </view>-->
+</view>

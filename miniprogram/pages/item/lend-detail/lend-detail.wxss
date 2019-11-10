@@ -56,3 +56,33 @@
 /*    color: #999999;*/
 /*    width: 150rpx;*/
 /*}*/
+
+.item-controls {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 20rpx;
+}
+.item-controls:empty {
+    display: none;
+}
+.item-controls button {
+    width: 30%;
+}
+.item-controls.mgr-controls button {
+    width: 25%;
+}
+.item-controls button:not(:first-child) {
+}
+
+.weui-btn+.weui-btn {
+    margin-top: 0;
+}
+.weui-media-box__desc {
+    display: block;
+}

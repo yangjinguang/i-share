@@ -1,0 +1,46 @@
+page {
+    height: 100%;
+}
+
+.loaned-items {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    background-color: #ffffff;
+
+}
+
+.loaned-items_tabs {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.loaned-items_tab {
+    flex: 1;
+    padding: 0 12px;
+    font-size: 30rpx;
+    color: #999;
+    text-align: center;
+}
+.loaned-items_tab.active {
+    color: #15AABF;
+}
+
+.loaned-items_tab:not(:last-child) {
+    border-right: 1px solid #ddd;
+}
+
+
+
+.lend-order-desc-row {
+    display: flex;
+    align-items: center;
+}
+
+.lend-order-desc-row .order-label {
+    margin-right: 10px;
+}

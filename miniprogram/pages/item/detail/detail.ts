@@ -66,24 +66,24 @@ Page({
         });
     },
     itemLoanCancel() {
-        wx.showModal({
-            title: '是否要强制取消借出状态?',
-            content: '取消后不可恢复',
-            confirmText: '确定',
-            cancelText: '取消',
-            success: (res) => {
-                if (res.confirm) {
-                    if (!this.data.item.id) {
-                        return;
-                    }
-                    this.data.itemApi.cancelItemLoan(this.data.item.id).then(() => {
-                        if (this.data.item.id) {
-                            this.itemDetail(this.data.item.id);
-                        }
-                    });
-                } else {
-                }
-            }
-        });
+        // wx.showModal({
+        //     title: '是否要强制取消借出状态?',
+        //     content: '取消后不可恢复',
+        //     confirmText: '确定',
+        //     cancelText: '取消',
+        //     success: (res) => {
+        //         if (res.confirm) {
+        //             if (!this.data.item.id) {
+        //                 return;
+        //             }
+        //             this.data.itemApi.cancelItemLoan(this.data.item.id).then(() => {
+        //                 if (this.data.item.id) {
+        //                     this.itemDetail(this.data.item.id);
+        //                 }
+        //             });
+        //         } else {
+        //         }
+        //     }
+        // });
     }
 });

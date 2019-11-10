@@ -13,6 +13,9 @@ export interface ItemLendOrder {
     createdAt: Date;
     updatedAt: Date;
 
+    userName: string;
+    itemTitle: string;
+    itemCoverUrl: string;
     item: Item;
     user: User;
     student: Student;
@@ -20,14 +23,16 @@ export interface ItemLendOrder {
     studentClass: Class;
     beginEndStr: string;
     statusView: string
+    createdAtView: string;
 }
 
 export const ItemLoanedRecordArr = [
     'self',
     '待确认',
-    '已同意',
-    '已拒绝',
-    '已逾期',
+    '阅读中',
+    '借阅被拒绝',
+    '已撤回',
     '归还中',
-    '已归还'
+    '已归还',
+    '已逾期'
 ];

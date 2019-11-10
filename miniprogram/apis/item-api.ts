@@ -5,6 +5,7 @@ import {Item} from '../utils/types/item';
 import {ItemQueryResponse} from '../utils/types/item-query-response';
 import {ItemLendOrder} from '../utils/types/item-lend-order';
 import {LendOrderHandleBody} from '../utils/types/lend-order-handle-body';
+import {Pagination} from '../utils/types/pagination';
 
 export class ItemApi {
     private http: HttpClient;
@@ -81,12 +82,16 @@ export class ItemApi {
         return this.http.put(`${config.apiBaseUrl}/item/lend`, order);
     }
 
-    public loanReturn(recordId: string): Promise<ItemLendOrder> {
-        return this.http.put(`${config.apiBaseUrl}/items/return/${recordId}`);
+    public lendReturn(orderId: number): Promise<string> {
+        return this.http.put(`${config.apiBaseUrl}/item/lend/return/${orderId}`);
     }
 
-    public cancelItemLoan(id: number): Promise<string> {
-        return this.http.delete(`${config.apiBaseUrl}/items/loanRecord/cancel/${id}`);
+    public lendCancel(orderId: number): Promise<string> {
+        return this.http.put(`${config.apiBaseUrl}/item/lend/cancel/${orderId}`);
+    }
+
+    public lendDelete(orderId: number): Promise<string> {
+        return this.http.put(`${config.apiBaseUrl}/item/lend/delete/${orderId}`);
     }
 
     public getLendDetail(orderId: number): Promise<ItemLendOrder> {
@@ -95,5 +100,13 @@ export class ItemApi {
 
     public lendOrderHandle(body: LendOrderHandleBody): Promise<ItemLendOrder> {
         return this.http.put(`${config.apiBaseUrl}/item/lend/handle`, body);
+    }
+
+    public getMyLendOrders(status: number[], page: number, size: number): Promise<{ pagination: Pagination, list: ItemLendOrder[] }> {
+        return this.http.get(`${config.apiBaseUrl}/item/lend/my`, {
+            status: status.join(','),
+            page: page,
+            size: size
+        });
     }
 }
