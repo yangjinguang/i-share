@@ -1,3 +1,106 @@
-<view class="page">
-
+<!--<view class="share-filter">-->
+<!--    <view class="share-filter-part {{filterClassId?'':'active'}}">-->
+<!--        <view data-class-index="{{-1}}"-->
+<!--              bindtap="toFilter">-->
+<!--            全部-->
+<!--        </view>-->
+<!--    </view>-->
+<!--    <view class="share-filter-part share-filter-class {{filterClassId?'active':''}}">-->
+<!--        <view data-class-index="{{classIndex}}"-->
+<!--              bindtap="toFilter">-->
+<!--            {{classesArr[classIndex]}}-->
+<!--        </view>-->
+<!--        <text></text>-->
+<!--        <picker class="share-class-picker"-->
+<!--                bindchange="bindClassSelectChange" value="{{classIndex}}"-->
+<!--                range="{{classesArr}}">-->
+<!--            <image src="/icons/angle-down.png"></image>-->
+<!--        </picker>-->
+<!--    </view>-->
+<!--</view>-->
+<view class="item-catalog_filter">
+    <view class="item-catalog_filter-part">
+        <text class="item-catalog_filter-label">班级:</text>
+        <picker class="catalog-filter-picker"
+                bindchange="bindClassFilterChange" value="{{classIndex}}"
+                range="{{classesArr}}">
+            <text>{{classesArr[classIndex]}}</text>
+            <image src="/icons/angle-down.png"></image>
+        </picker>
+    </view>
 </view>
+<scroll-view scroll-y class="share-list" bindtap="hideCommentInput" bindscrolltolower="getMore">
+    <view class="share-item" wx:for="{{shares}}" wx:key="{{item.id}}">
+        <view class="share-item-title">
+            <view class="share-item-user">
+                <image class="share-item-avatar" src="{{item.uploadUserAvatarUrl}}"></image>
+                <text class="share-item-name">{{item.uploadUserName}}</text>
+            </view>
+            <text class="share-item-time">{{item.timeDiff}}</text>
+        </view>
+        <view class="share-item-child">{{item.studentGradeName}}{{item.studentClassName}} - {{item.studentName}}</view>
+        <view class="share-item-body">
+            <view class="share-item-desc">{{item.describe}}</view>
+            <video style="width: {{item.video.vWidth}};height:{{item.video.vHeight}}" src="{{item.media.path}}"></video>
+            <view class="h-line"></view>
+            <navigator url="/pages/item/detail/detail?id={{item.item.id}}" class="share-item-item"
+                       hover-class="weui-cell_active">
+                <image class="share-item-item-cover" mode="widthFix" src="{{item.itemCoverUrl}}"></image>
+                <text>{{item.itemTitle}}</text>
+            </navigator>
+        </view>
+        <view class="share-item-controls">
+            <view class="share-control-part">
+                <view class="share-control-btn"
+                      hover-class="hover"
+                      data-share-index="{{index}}"
+                      data-share-id="{{item.id}}"
+                      bindtap="shareLike">
+                    <image wx:if="{{!item.liked}}" src="/icons/heart.png"></image>
+                    <image wx:if="{{item.liked}}" src="/icons/heart-full-pink.png"></image>
+                    <text>{{item.likeUserIds.length||''}}</text>
+                </view>
+            </view>
+            <view class="share-control-part">
+                <view class="share-control-btn"
+                      hover-class="hover"
+                      data-share-id="{{item.id}}"
+                      catchtap="showCommentInput">
+                    <image src="/icons/comment-alt.png"></image>
+                    <text>{{item.comments.length||''}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="share-item-comment">
+            <view class="share-item-likes" wx:if="{{item.likeUserIds.length>0}}">
+                <image src="/icons/heart-full.png"></image>
+                <text>{{item.likeUsersView}}</text>
+            </view>
+            <view class="share-item-comment_container" wx:if="{{item.comments&&item.comments.length>0}}">
+                <view class="share-item-comment_row"
+                      hover-class="weui-cell_active"
+                      wx:for="{{item.comments}}"
+                      wx:key="{{comment.id}}"
+                      wx:for-item="comment"
+                      data-comment-id="{{comment.id}}"
+                      data-share-id="{{item.id}}"
+                      bindlongpress="commentAction">
+                    <text class="share-item-comment_username">{{comment.user.name}}:</text>
+                    <text class="share-item-comment_content">{{comment.body}}</text>
+                </view>
+            </view>
+
+        </view>
+    </view>
+</scroll-view>
+<form class="comment-input-group" wx:if="{{commentInputShown}}" bindsubmit="sendComment">
+    <view class="commnet-input-group_container">
+        <input focus="true" cursor-spacing="12" name="body"/>
+        <button class="weui-btn"
+                type="primary"
+                form-type="submit"
+                size="mini">发送
+        </button>
+    </view>
+
+</form>

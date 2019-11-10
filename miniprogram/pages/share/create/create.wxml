@@ -1,0 +1,62 @@
+<form bindsubmit="formSubmit" xmlns="">
+    <view class="weui-cells__title">选择孩子</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_select">
+            <view class="weui-cell__bd">
+                <picker bindchange="bindstudentChange" value="{{studentIndex}}" range="{{studentArr}}">
+                    <view class="weui-select">{{studentArr[studentIndex]}}</view>
+                </picker>
+            </view>
+        </view>
+    </view>
+    <view class="weui-cells__title">选择图书</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_select">
+            <view class="weui-cell__bd">
+                <picker bindchange="bindAccountChange" value="{{itemLendOrdersIndex}}"
+                        range="{{itemLendOrdersArr}}">
+                    <view class="weui-select">{{itemLendOrdersArr[itemLendOrdersIndex]}}</view>
+                </picker>
+            </view>
+        </view>
+    </view>
+    <view class="weui-cells__title">上传视频</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+            <view class="weui-uploader">
+                <view class="weui-uploader__bd">
+                    <view class="weui-uploader__files" id="uploaderFiles">
+                        <view class="weui-uploader__file {{selectedVideo.success?'':'weui-uploader__file_status'}}"
+                              wx:if="{{selectedVideo.tempPath}}"
+                              bindtap="chooseVideo">
+                            <video class="weui-uploader__img" src="{{selectedVideo.tempPath}}"></video>
+                            <view class="weui-uploader__file-content">
+                                <view wx:if="{{!selectedVideo.completed}}">
+                                    {{selectedVideo.progress}}%
+                                </view>
+                                <icon wx:if="{{selectedVideo.completed&&!selectedVideo.success}}" type="warn"
+                                      size="23"
+                                      color="#F43530"></icon>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="weui-uploader__input-box" wx:if="{{!selectedVideo.tempPath}}">
+                        <view class="weui-uploader__input" bindtap="chooseVideo"></view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="weui-cells__title">描述</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+            <view class="weui-cell__bd">
+                <textarea name="describe" class="weui-textarea" placeholder="请输入描述" style="height: 3.3em"></textarea>
+                <view class="weui-textarea-counter">0/200</view>
+            </view>
+        </view>
+    </view>
+    <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" form-type="submit">提交</button>
+    </view>
+</form>

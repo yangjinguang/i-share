@@ -70,20 +70,19 @@ export class Utils {
             return;
         }
         shares.map(i => {
-            const s = i.video.height / i.video.width;
-            if (i.video.width >= i.video.height) {
-                if (i.video.width > 200) {
-                    i.video.vWidth = 200 * alpha + 'px';
-                    i.video.vHeight = 200 * s * alpha + 'px';
+            const s = i.media.height / i.media.width;
+            if (i.media.width >= i.media.height) {
+                if (i.media.width > 200) {
+                    i.media.vWidth = 200 * alpha + 'px';
+                    i.media.vHeight = 200 * s * alpha + 'px';
                 }
             } else {
-                if (i.video.height > 200) {
-                    i.video.vHeight = 200 * alpha + 'px';
-                    i.video.vWidth = 200 / s * alpha + 'px';
+                if (i.media.height > 200) {
+                    i.media.vHeight = 200 * alpha + 'px';
+                    i.media.vWidth = 200 / s * alpha + 'px';
                 }
             }
-            i.timeDiff = this.timeDiff(i.createdAt);
-            this.childSerialize(i.child);
+            i.timeDiff = this.timeDiff(new Date(i.createdAt));
             i.likeUsersView = this.usersNameStr(i.likeUsers);
             return i;
         });

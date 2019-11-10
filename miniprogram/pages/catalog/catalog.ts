@@ -43,19 +43,13 @@ Page({
             tagId: 0,
             page: 1
         });
-        this.data.classApi.classTree().then(result => {
-            let classes = <Class[]>[];
+        this.data.classApi.classList().then(result => {
             let classesArr = ['全部'];
-            result.forEach(g => {
-                const _classes = g.classes || [];
-                _classes.forEach(c => {
-                    classesArr.push(g.name + ' ' + c.name);
-                    classes.push(c);
-                });
+            result.forEach(c => {
+                classesArr.push(c.gradeName + ' ' + c.name);
             });
             this.setData({
-                classes: classes,
-                classTree: result,
+                classes: result,
                 classesArr: classesArr
             });
         });

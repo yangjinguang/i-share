@@ -1,4 +1,4 @@
-import {VideoOb} from './video-ob';
+import {ShareMedia} from './share-media';
 import {Student} from './student';
 import {User} from './user';
 import {Item} from './item';
@@ -8,16 +8,16 @@ export interface Share {
     id: number;
     userId: number;
     itemId: number;
-    classId: number;
-    childId: number;
+    mediaId: number;
+    studentId: number;
     title: string;
-    video: VideoOb;
-    describe: string;
+    desc: string;
     likeUserIds: number[];
     createdAt: Date;
     updatedAt: Date;
 
-    child: Student;
+    media: ShareMedia;
+    student: Student;
     user: User;
     item: Item;
     likeUsers: User[];

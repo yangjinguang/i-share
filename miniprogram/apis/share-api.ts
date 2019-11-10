@@ -11,15 +11,18 @@ export class ShareApi {
     }
 
     public query(classId: number, page: number, size: number): Promise<ShareListResponse> {
-        return this.http.get(`${config.apiBaseUrl}/shares`, {
-            classId: classId,
-            page: page.toString(),
-            size: size.toString()
-        });
+        let query = <any>{
+            page: page,
+            size: size
+        };
+        if (classId) {
+            query.classId = classId;
+        }
+        return this.http.get(`${config.apiBaseUrl}/share`, query);
     }
 
     public create(newShare: Share): Promise<Share> {
-        return this.http.post(`${config.apiBaseUrl}/shares`, newShare);
+        return this.http.post(`${config.apiBaseUrl}/share`, newShare);
     }
 
     public getOne(shareId: number): Promise<Share> {

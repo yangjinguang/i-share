@@ -1,4 +1,4 @@
-export interface VideoOb {
+export interface ShareMedia {
     path: string;
     duration: number;
     height: number;

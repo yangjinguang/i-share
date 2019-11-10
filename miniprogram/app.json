@@ -2,6 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/share/share",
+    "pages/share/create/create",
+    "pages/share/detail/detail",
     "pages/catalog/catalog",
     "pages/my/my",
     "pages/my/todo/todo",
