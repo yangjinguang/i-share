@@ -8,6 +8,7 @@ import {Class} from '../../utils/types/class';
 import {ClassApi} from '../../apis/class-api';
 import {IMyApp} from '../../app';
 import {User} from '../../utils/types/user';
+import {GetProfile} from '../../utils/login';
 
 const app = getApp<IMyApp>();
 
@@ -37,13 +38,14 @@ Page({
         });
     },
     onShow() {
-        this.setData({
-            profile: app.globalData.profile,
+        GetProfile(app, (profile) => {
+            this.setData({
+                profile: profile,
+            });
+            this.getClassTree();
+            this.getShares(1);
         });
-        console.log(app.globalData);
-        console.log(this.data.profile);
-        this.getClassTree();
-        this.getShares(1);
+
     },
 
     getClassTree() {

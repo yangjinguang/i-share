@@ -17,5 +17,6 @@ export interface User {
     classes: Class[];
     isAdmin: boolean;
     isTeacher: boolean;
+    isLogin: boolean;
 }
 

@@ -32,34 +32,23 @@ Page({
         });
     },
     onShow() {
+        this.getBaseData().then(() => {
+        });
+        this.itemsQuery(1);
+    },
+    async getBaseData() {
+        let classes = await this.data.classApi.classList();
+        let classesArr = ['全部'];
+        classes.forEach(c => {
+            classesArr.push(c.gradeName + ' ' + c.name);
+        });
+        let tags = await this.data.itemApi.getTags();
         this.setData({
-            tagsArr: <string[]>[],
-            items: <Item[]>[],
-            classes: <Class[]>[],
-            classTree: <Grade[]>[],
-            classesArr: <string[]>[],
-            classIndex: 0,
-            tagIndex: 0,
-            tagId: 0,
-            page: 1
+            classes: classes,
+            classesArr: classesArr,
+            tags: tags,
+            tagsArr: ['全部'].concat(tags.map(i => i.name))
         });
-        this.data.classApi.classList().then(result => {
-            let classesArr = ['全部'];
-            result.forEach(c => {
-                classesArr.push(c.gradeName + ' ' + c.name);
-            });
-            this.setData({
-                classes: result,
-                classesArr: classesArr
-            });
-        });
-        this.data.itemApi.getTags().then(result => {
-            this.setData({
-                tags: result,
-                tagsArr: ['全部'].concat(result.map(i => i.name))
-            });
-        });
-        this.itemsQuery();
     },
     itemsQuery(page?: number) {
         page = page || this.data.page;

@@ -1,4 +1,4 @@
-import {CheckLoginStatus, Login} from '../../utils/login';
+import {CheckLoginStatus, GetProfile, Login} from '../../utils/login';
 import {User} from '../../utils/types/user';
 import {IMyApp} from '../../app';
 import {UserApi} from '../../apis/user-api';
@@ -20,23 +20,9 @@ Page({
         });
     },
     onShow() {
-        CheckLoginStatus((res) => {
-            this.setData({
-                userInfo: res.userInfo,
-            });
-            this.getProfile();
-            this.getTodoCount();
-        }, () => {
-            console.log('not login');
-            this.setData({
-                isLogin: false,
-            });
-        });
-    },
-    getProfile() {
-        this.data.userApi.profile().then(res => {
-            this.profileParse(res);
-        });
+        if (app.globalData.profile) {
+            this.profileParse(app.globalData.profile);
+        }
     },
     getTodoCount() {
         this.data.todoApi.getCount().then(result => {
