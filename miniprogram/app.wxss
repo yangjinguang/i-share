@@ -61,3 +61,7 @@ page{
 .weui-cell_select .weui-cell__hd + .weui-cell__bd .weui-select {
   padding-left: 0;
 }
+
+.weui-loadmore__tips_in-line {
+  background-color: #EDEDED;
+}

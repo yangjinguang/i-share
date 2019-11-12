@@ -1,5 +1,6 @@
 import {Class} from './class';
 import {ItemTag} from './item-tag';
+import {Share} from './share';
 
 export interface Item {
     id?: number;
@@ -8,7 +9,7 @@ export interface Item {
     classId?: number;
     coverUrl: string;
     desc: string;
-    status:number;
+    status: number;
     uploadUserId?: number;
     createdAt?: string;
     createdAtView?: string;
@@ -20,4 +21,5 @@ export interface Item {
     iClass?: Class;
     classView?: string;
     lend: boolean
+    popularShares: Share[];
 }

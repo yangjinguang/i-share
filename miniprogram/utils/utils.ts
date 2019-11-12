@@ -65,25 +65,42 @@ export class Utils {
 
     }
 
-    public static shareSerialize(alpha: number, ...shares: Share[]) {
+    public static shareMediaSerialize(alpha: number, share: Share) {
+        const s = share.media.height / share.media.width;
+        if (share.media.width >= share.media.height) {
+            if (share.media.width > 200) {
+                share.media.vWidth = 200 * alpha + 'px';
+                share.media.vHeight = 200 * s * alpha + 'px';
+            }
+        } else {
+            if (share.media.height > 200) {
+                share.media.vHeight = 200 * alpha + 'px';
+                share.media.vWidth = 200 / s * alpha + 'px';
+            }
+        }
+    }
+
+    public static shareSerialize(alpha: number, profile: User, ...shares: Share[]) {
         if (!shares) {
             return;
         }
         shares.map(i => {
-            const s = i.media.height / i.media.width;
-            if (i.media.width >= i.media.height) {
-                if (i.media.width > 200) {
-                    i.media.vWidth = 200 * alpha + 'px';
-                    i.media.vHeight = 200 * s * alpha + 'px';
-                }
-            } else {
-                if (i.media.height > 200) {
-                    i.media.vHeight = 200 * alpha + 'px';
-                    i.media.vWidth = 200 / s * alpha + 'px';
-                }
-            }
+            // const s = i.media.height / i.media.width;
+            // if (i.media.width >= i.media.height) {
+            //     if (i.media.width > 200) {
+            //         i.media.vWidth = 200 * alpha + 'px';
+            //         i.media.vHeight = 200 * s * alpha + 'px';
+            //     }
+            // } else {
+            //     if (i.media.height > 200) {
+            //         i.media.vHeight = 200 * alpha + 'px';
+            //         i.media.vWidth = 200 / s * alpha + 'px';
+            //     }
+            // }
+            this.shareMediaSerialize(alpha, i);
             i.timeDiff = this.timeDiff(new Date(i.createdAt));
-            i.likeUsersView = this.usersNameStr(i.likeUsers);
+            i.likeUsersView = i.likes.map(i => i.userName).join(',');
+            i.liked = i.likes.findIndex(j => j.id === profile.id) > -1;
             return i;
         });
     }

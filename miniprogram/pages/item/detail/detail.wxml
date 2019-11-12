@@ -25,13 +25,28 @@
         <view class="weui-media-box weui-media-box_text">
             <view class="weui-media-box__desc">{{item.desc}}</view>
         </view>
-
     </view>
 </view>
 
 <view class="weui-panel weui-panel_access">
     <view class="weui-panel__hd">精彩分享</view>
+        <view class="pop-shares">
+            <navigator class="share-item"
+                       url="/pages/share/detail/detail"
+                       wx:for="{{item.popularShares}}"
+                  wx:for-item="share"
+                  wx:key="{{share.id}}">
+                <view class="share-media">
+                    <video style="width: {{share.media.vWidth}};height:{{share.media.vHeight}}" src="{{share.media.path}}" controls="false"></video>
+                </view>
+                <view class="share-info">
+                    <view class="share-upload-user">{{share.uploadUserName}}</view>
+                    <view class="share-student">{{share.studentGradeName}}{{share.studentClassName}} - {{share.studentName}}</view>
+                </view>
+            </navigator>
+        </view>
     <view class="weui-panel__bd">
+
     </view>
 </view>
 

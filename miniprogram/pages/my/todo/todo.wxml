@@ -31,7 +31,7 @@
         </view>
     </view>
 
-    <view class="content-empty" wx:if="{{idAuthOrders.length<=0&&itemLendOrders.length<=0}}">
-        暂无内容
+    <view class="weui-loadmore weui-loadmore_line" wx:if="{{idAuthOrders.length<=0&&itemLendOrders.length<=0}}">
+        <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
     </view>
 </view>

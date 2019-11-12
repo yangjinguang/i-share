@@ -64,8 +64,8 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": " 分类",
+					"id": 1,
+					"name": "书架",
 					"pathName": "pages/catalog/catalog",
 					"query": "",
 					"scene": null
@@ -74,6 +74,7 @@
 					"id": -1,
 					"name": "动态",
 					"pathName": "pages/share/share",
+					"query": "",
 					"scene": null
 				}
 			]

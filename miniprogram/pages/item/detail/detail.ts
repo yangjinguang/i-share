@@ -26,6 +26,9 @@ Page({
             result.tagsView = result.tags ? result.tags.map(i => i.name).join(',') : '';
             result.createdAtView = result.createdAt ? Utils.dateFormat(new Date(result.createdAt), 'yyyy-MM-dd hh:mm:ss') : '';
             result.lend = result.status !== 1;
+            result.popularShares.forEach(i => {
+                Utils.shareMediaSerialize(.5, i);
+            });
             this.setData({
                 item: result
             });

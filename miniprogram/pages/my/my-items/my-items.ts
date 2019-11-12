@@ -20,7 +20,7 @@ Page({
 
     },
     onLoad() {
-        this.setData!({
+        this.setData({
             itemApi: new ItemApi()
         });
     },

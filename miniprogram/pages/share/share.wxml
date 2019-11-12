@@ -41,11 +41,11 @@
         <view class="share-item-child">{{item.studentGradeName}}{{item.studentClassName}} - {{item.studentName}}</view>
         <view class="share-item-body">
             <view class="share-item-desc">{{item.describe}}</view>
-            <video style="width: {{item.video.vWidth}};height:{{item.video.vHeight}}" src="{{item.media.path}}"></video>
+            <video style="width: {{item.media.vWidth}};height:{{item.media.vHeight}}" src="{{item.media.path}}"></video>
             <view class="h-line"></view>
-            <navigator url="/pages/item/detail/detail?id={{item.item.id}}" class="share-item-item"
+            <navigator url="/pages/item/detail/detail?id={{item.itemId}}" class="share-item-item"
                        hover-class="weui-cell_active">
-                <image class="share-item-item-cover" mode="widthFix" src="{{item.itemCoverUrl}}"></image>
+                <image class="share-item-item-cover" mode="aspectFill" src="{{item.itemCoverUrl}}"></image>
                 <text>{{item.itemTitle}}</text>
             </navigator>
         </view>
@@ -58,7 +58,7 @@
                       bindtap="shareLike">
                     <image wx:if="{{!item.liked}}" src="/icons/heart.png"></image>
                     <image wx:if="{{item.liked}}" src="/icons/heart-full-pink.png"></image>
-                    <text>{{item.likeUserIds.length||''}}</text>
+                    <text>{{item.likes.length||''}}</text>
                 </view>
             </view>
             <view class="share-control-part">
@@ -72,7 +72,7 @@
             </view>
         </view>
         <view class="share-item-comment">
-            <view class="share-item-likes" wx:if="{{item.likeUserIds.length>0}}">
+            <view class="share-item-likes" wx:if="{{item.likes.length>0}}">
                 <image src="/icons/heart-full.png"></image>
                 <text>{{item.likeUsersView}}</text>
             </view>
@@ -85,8 +85,8 @@
                       data-comment-id="{{comment.id}}"
                       data-share-id="{{item.id}}"
                       bindlongpress="commentAction">
-                    <text class="share-item-comment_username">{{comment.user.name}}:</text>
-                    <text class="share-item-comment_content">{{comment.body}}</text>
+                    <text class="share-item-comment_username">{{comment.userName}}:</text>
+                    <text class="share-item-comment_content">{{comment.comment}}</text>
                 </view>
             </view>
 

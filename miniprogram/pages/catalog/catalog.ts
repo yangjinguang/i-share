@@ -55,7 +55,10 @@ Page({
         let tagId = this.data.filterTagId;
         let classId = this.data.filterClassId;
         this.data.itemApi.query(page, 20, tagId, classId).then(result => {
-            let items = this.data.items || [];
+            let items = <Item[]>[];
+            if (page && page > 1) {
+                items = this.data.items;
+            }
             if (result.list && result.list.length > 0) {
                 items = items.concat(result.list);
             }

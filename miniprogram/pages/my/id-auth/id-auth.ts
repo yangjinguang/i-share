@@ -51,7 +51,7 @@ Page({
     },
 
     bindRoleChange(e: any) {
-        this.setData!({
+        this.setData({
             roleIndex: parseInt(e.detail.value)
         });
     },
@@ -85,20 +85,12 @@ Page({
         if (formValue['class'] && formValue['class'].length > 0) {
             orderData['classId'] = classTree[formValue['class'][0]].classes[formValue['class'][1]].id;
         } else {
-            // TODO err handle
             return;
         }
-        console.info(orderData);
         this.data.userApi.idAuth(orderData).then(() => {
             wx.navigateBack({
                 delta: 1
             });
         });
-
-        // this.data.userApi.idAuth(postData).then(() => {
-        //     wx.reLaunch({
-        //         url: '/pages/my/my'
-        //     });
-        // });
     }
 });

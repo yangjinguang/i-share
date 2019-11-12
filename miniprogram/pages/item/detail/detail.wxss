@@ -72,3 +72,29 @@
 .weui-media-box__desc {
     display: block;
 }
+
+.pop-shares {
+    padding: 10px;
+}
+
+.share-item {
+    display: flex;
+    align-items: center;
+    padding: 6px;
+}
+.share-item:not(:last-child){
+    border-bottom:  1px solid #ddd;
+}
+.share-item .share-media {
+    margin-right: 40rpx;
+}
+.share-item .share-info {
+}
+.share-item .share-upload-user {
+    color: #333;
+    font-size: 35rpx;
+}
+.share-item .share-student {
+    font-size: 25rpx;
+    color: rgba(0,0,0,.5);
+}

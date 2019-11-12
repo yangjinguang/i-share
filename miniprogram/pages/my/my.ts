@@ -1,4 +1,4 @@
-import {CheckLoginStatus, GetProfile, Login} from '../../utils/login';
+import {Login} from '../../utils/login';
 import {User} from '../../utils/types/user';
 import {IMyApp} from '../../app';
 import {UserApi} from '../../apis/user-api';
@@ -20,9 +20,14 @@ Page({
         });
     },
     onShow() {
-        if (app.globalData.profile) {
-            this.profileParse(app.globalData.profile);
-        }
+        this.getProfile();
+        this.getTodoCount();
+    },
+    getProfile() {
+        this.data.userApi.profile().then(profile => {
+            app.globalData.profile = profile;
+            this.profileParse(profile);
+        });
     },
     getTodoCount() {
         this.data.todoApi.getCount().then(result => {

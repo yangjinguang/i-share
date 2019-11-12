@@ -72,7 +72,7 @@ Page({
             if (result.list === null) {
                 return;
             }
-            Utils.shareSerialize(1, ...result.list);
+            Utils.shareSerialize(1, this.data.profile, ...result.list);
             let shares = this.data.shares || [];
             if (page && page > 1) {
                 if (result.list && result.list.length > 0) {
@@ -101,6 +101,19 @@ Page({
             });
         });
     },
+    getComments(shareId: number) {
+        this.data.shareApi.getComments(shareId).then(comments => {
+            this.setData({
+                shares: this.data.shares.map(i => {
+                    if (i.id === shareId) {
+                        i.comments = comments;
+                    }
+                    return i;
+                }),
+                commentInputShown: false
+            });
+        });
+    },
     bindClassFilterChange(e: WxBindEvent) {
         console.log(e.detail.value);
         if (this.data.classIndex === e.detail.value) {
@@ -120,17 +133,6 @@ Page({
         let shareId = e.currentTarget.dataset['shareId'];
         this.data.shareApi.like(shareId).then(() => {
             this.getLikes(shareId);
-            // this.setData!({
-            //     shares: this.data.shares.map(i => {
-            //         if (i.id === result.id) {
-            //             i.likeUserIds = result.likeUserIds;
-            //             i.likeUsers = result.likeUsers;
-            //             i.likeUsersView = Utils.usersNameStr(i.likeUsers);
-            //             i.liked = result.liked;
-            //         }
-            //         return i;
-            //     })
-            // });
         });
     },
     showCommentInput(e: WxBindEvent) {
@@ -157,16 +159,8 @@ Page({
             });
             return;
         }
-        this.data.shareApi.comment(selectedShare.id, e.detail.value['body']).then(result => {
-            this.setData({
-                // shares: this.data.shares.map(i => {
-                //     if (i.id === result.shareId) {
-                //         i.comments = result.comments;
-                //     }
-                //     return i;
-                // }),
-                commentInputShown: false,
-            });
+        this.data.shareApi.comment(selectedShare.id, e.detail.value['body']).then(() => {
+            this.getComments(selectedShare.id);
         });
     },
     commentAction(e: WxBindEvent) {

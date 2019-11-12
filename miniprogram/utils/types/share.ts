@@ -25,4 +25,5 @@ export interface Share {
 
     comments: ShareComment[];
     likes: ShareLike[];
+    likeUsersView: string;
 }
