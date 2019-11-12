@@ -72,7 +72,7 @@ Page({
             if (result.list === null) {
                 return;
             }
-            Utils.shareSerialize(1, this.data.profile, ...result.list);
+            Utils.shareListSerialize(1, this.data.profile, ...result.list);
             let shares = this.data.shares || [];
             if (page && page > 1) {
                 if (result.list && result.list.length > 0) {

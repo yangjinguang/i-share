@@ -1,2 +1,63 @@
 <!--pages/share/detail/detail.wxml-->
-<text>pages/share/detail/detail.wxml</text>
+<view class="share-item">
+    <view class="share-item-title">
+        <view class="share-item-user">
+            <image class="share-item-avatar" src="{{share.uploadUserAvatarUrl}}"></image>
+            <text class="share-item-name">{{share.uploadUserName}}</text>
+        </view>
+        <text class="share-item-time">{{share.timeDiff}}</text>
+    </view>
+    <view class="share-item-child">{{share.studentGradeName}}{{share.studentClassName}} - {{share.studentName}}</view>
+    <view class="share-item-body">
+        <view class="share-item-desc">{{share.describe}}</view>
+        <video style="width: {{item.media.vWidth}};height:{{item.media.vHeight}}" src="{{share.media.path}}"></video>
+        <view class="h-line"></view>
+        <navigator url="/pages/item/detail/detail?id={{item.itemId}}" class="share-item-item"
+                   hover-class="weui-cell_active">
+            <image class="share-item-item-cover" mode="aspectFill" src="{{share.itemCoverUrl}}"></image>
+            <text>{{share.itemTitle}}</text>
+        </navigator>
+    </view>
+    <view class="share-item-controls">
+        <view class="share-control-part">
+            <view class="share-control-btn"
+                  hover-class="hover"
+                  data-share-index="{{index}}"
+                  data-share-id="{{share.id}}"
+                  bindtap="shareLike">
+                <image wx:if="{{!share.liked}}" src="/icons/heart.png"></image>
+                <image wx:if="{{share.liked}}" src="/icons/heart-full-pink.png"></image>
+                <text>{{share.likes.length||''}}</text>
+            </view>
+        </view>
+        <view class="share-control-part">
+            <view class="share-control-btn"
+                  hover-class="hover"
+                  data-share-id="{{share.id}}"
+                  catchtap="showCommentInput">
+                <image src="/icons/comment-alt.png"></image>
+                <text>{{share.comments.length||''}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="share-item-comment">
+        <view class="share-item-likes" wx:if="{{share.likes.length>0}}">
+            <image src="/icons/heart-full.png"></image>
+            <text>{{share.likeUsersView}}</text>
+        </view>
+        <view class="share-item-comment_container" wx:if="{{share.comments&&share.comments.length>0}}">
+            <view class="share-item-comment_row"
+                  hover-class="weui-cell_active"
+                  wx:for="{{share.comments}}"
+                  wx:key="{{comment.id}}"
+                  wx:for-item="comment"
+                  data-comment-id="{{comment.id}}"
+                  data-share-id="{{share.id}}"
+                  bindlongpress="commentAction">
+                <text class="share-item-comment_username">{{comment.userName}}:</text>
+                <text class="share-item-comment_content">{{comment.comment}}</text>
+            </view>
+        </view>
+
+    </view>
+</view>

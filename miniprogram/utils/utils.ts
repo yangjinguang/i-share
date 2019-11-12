@@ -80,27 +80,19 @@ export class Utils {
         }
     }
 
-    public static shareSerialize(alpha: number, profile: User, ...shares: Share[]) {
+    public static shareSerialize(alpha: number, profile: User, share: Share) {
+        this.shareMediaSerialize(alpha, share);
+        share.timeDiff = this.timeDiff(new Date(share.createdAt));
+        share.likeUsersView = share.likes.map(i => i.userName).join(',');
+        share.liked = share.likes.findIndex(j => j.id === profile.id) > -1;
+    }
+
+    public static shareListSerialize(alpha: number, profile: User, ...shares: Share[]) {
         if (!shares) {
             return;
         }
         shares.map(i => {
-            // const s = i.media.height / i.media.width;
-            // if (i.media.width >= i.media.height) {
-            //     if (i.media.width > 200) {
-            //         i.media.vWidth = 200 * alpha + 'px';
-            //         i.media.vHeight = 200 * s * alpha + 'px';
-            //     }
-            // } else {
-            //     if (i.media.height > 200) {
-            //         i.media.vHeight = 200 * alpha + 'px';
-            //         i.media.vWidth = 200 / s * alpha + 'px';
-            //     }
-            // }
-            this.shareMediaSerialize(alpha, i);
-            i.timeDiff = this.timeDiff(new Date(i.createdAt));
-            i.likeUsersView = i.likes.map(i => i.userName).join(',');
-            i.liked = i.likes.findIndex(j => j.id === profile.id) > -1;
+            this.shareSerialize(alpha, profile, i);
             return i;
         });
     }
