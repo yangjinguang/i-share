@@ -32,7 +32,7 @@
     <view class="weui-panel__hd">精彩分享</view>
         <view class="pop-shares">
             <navigator class="share-item"
-                       url="/pages/share/detail/detail"
+                       url="/pages/share/detail/detail?id={{share.id}}"
                        wx:for="{{item.popularShares}}"
                   wx:for-item="share"
                   wx:key="{{share.id}}">

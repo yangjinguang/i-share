@@ -10,9 +10,9 @@
     <view class="share-item-child">{{share.studentGradeName}}{{share.studentClassName}} - {{share.studentName}}</view>
     <view class="share-item-body">
         <view class="share-item-desc">{{share.describe}}</view>
-        <video style="width: {{item.media.vWidth}};height:{{item.media.vHeight}}" src="{{share.media.path}}"></video>
+        <video style="width: {{share.media.vWidth}};height:{{share.media.vHeight}}" src="{{share.media.path}}"></video>
         <view class="h-line"></view>
-        <navigator url="/pages/item/detail/detail?id={{item.itemId}}" class="share-item-item"
+        <navigator url="/pages/item/detail/detail?id={{share.itemId}}" class="share-item-item"
                    hover-class="weui-cell_active">
             <image class="share-item-item-cover" mode="aspectFill" src="{{share.itemCoverUrl}}"></image>
             <text>{{share.itemTitle}}</text>
@@ -61,3 +61,13 @@
 
     </view>
 </view>
+<form class="comment-input-group" wx:if="{{commentInputShown}}" bindsubmit="sendComment">
+    <view class="commnet-input-group_container">
+        <input focus="true" cursor-spacing="12" name="body" placeholder="评论"/>
+        <button class="weui-btn"
+                type="primary"
+                form-type="submit"
+                size="mini">发送
+        </button>
+    </view>
+</form>

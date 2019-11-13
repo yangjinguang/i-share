@@ -68,7 +68,7 @@ Page({
         }
         classId = classId || this.data.filterClassId;
         page = page || this.data.sharePageData.page;
-        this.data.shareApi.query(this.data.filterClassId, page, this.data.sharePageData.size).then(result => {
+        this.data.shareApi.query(this.data.filterClassId, 0, page, this.data.sharePageData.size).then(result => {
             if (result.list === null) {
                 return;
             }

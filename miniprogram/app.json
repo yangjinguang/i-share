@@ -16,6 +16,7 @@
     "pages/my/tags-mgr/create/create",
     "pages/my/items-mgr/items-mgr",
     "pages/my/my-items/my-items",
+    "pages/my/my-share/my-share",
     "pages/item/upload/upload",
     "pages/item/detail/detail",
     "pages/item/loan/loan",

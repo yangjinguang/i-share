@@ -12,13 +12,16 @@ export class ShareApi {
         this.http = new HttpClient();
     }
 
-    public query(classId: number, page: number, size: number): Promise<ShareListResponse> {
+    public query(classId: number, userId: number, page: number, size: number): Promise<ShareListResponse> {
         let query = <any>{
             page: page,
             size: size
         };
         if (classId) {
             query.classId = classId;
+        }
+        if (userId) {
+            query.userId = userId;
         }
         return this.http.get(`${config.apiBaseUrl}/share`, query);
     }
@@ -28,7 +31,7 @@ export class ShareApi {
     }
 
     public getOne(shareId: number): Promise<Share> {
-        return this.http.get(`${config.apiBaseUrl}/shares/byId/${shareId}`);
+        return this.http.get(`${config.apiBaseUrl}/share/${shareId}`);
     }
 
     public getMy(page: number, size: number): Promise<ShareListResponse> {

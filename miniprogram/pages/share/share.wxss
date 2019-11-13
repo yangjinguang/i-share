@@ -62,7 +62,7 @@ page {
 }
 
 .share-item-name {
-    font-size: 35rpx;
+    font-size: 30rpx;
     color: #333;
 }
 
@@ -116,7 +116,7 @@ page {
 
 .share-item-child {
     color: #135399;
-    font-size: 35rpx;
+    font-size: 28rpx;
     margin-bottom: 20rpx;
     padding-left: 70rpx;
 }

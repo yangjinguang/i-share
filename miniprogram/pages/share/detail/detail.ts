@@ -40,6 +40,7 @@ Page({
             this.setData({
                 share: result
             });
+            console.log(this.data);
         });
     },
     getLikes() {

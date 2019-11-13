@@ -1,0 +1,88 @@
+.my-share-list {
+    height: 100%;
+    padding: 10px 0;
+}
+
+.my-share-item {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+
+}
+
+.my-share-title {
+    height: 40rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    font-size: 25rpx;
+    padding: 10px 15px;
+    color: #333;
+}
+
+.my-share-content {
+    flex: 1;
+    display: flex;
+    padding: 10px 15px;
+}
+.my-share-content video {
+}
+
+.my-share-describe {
+    padding: 10px;
+    font-size: 30rpx;
+    color: #333;
+}
+
+.share-item-body {
+    border-radius: 6px;
+    padding: 15px;
+}
+.share-item-item-cover {
+    max-width: 200rpx;
+    max-height: 120rpx;
+    background-color: #fff;
+}
+
+.share-item-body .h-line {
+    border-bottom: 1px solid #ddd;
+    height: 0;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.share-share-body {
+    padding: 10px;
+}
+
+.share-item-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.share-item-item image {
+    width: 100rpx;
+    margin-right: 20rpx;
+}
+
+.share-item-desc {
+    color: #666;
+    font-size: 30rpx;
+}
+
+.share-item-title {
+
+}
+.share-item-desc + .share-item-title{
+    margin-top: 10px;
+}
+
+.share-item-child {
+    color: #135399;
+    font-size: 35rpx;
+    margin-bottom: 20rpx;
+    padding-left: 70rpx;
+}
