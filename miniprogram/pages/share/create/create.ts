@@ -85,7 +85,7 @@ Page({
                     });
                 });
                 fileItem.upload();
-                this.setData!({
+                this.setData({
                     selectedVideo: fileItem
                 });
             }

@@ -1,0 +1,37 @@
+<view class="weui-cells">
+    <view class="weui-cell">
+        <view class="weui-cell__bd">
+            <view class="weui-uploader">
+                <view class="weui-uploader__hd">
+                    <view class="weui-uploader__title">图片上传</view>
+                    <view class="weui-uploader__info">{{swiperImages.length}}/6</view>
+                </view>
+                <view class="weui-uploader__bd">
+                    <view class="weui-uploader__files">
+                        <view class="weui-uploader__file {{item.success?'':'weui-uploader__file_status'}}"
+                              data-image-index="{{index}}"
+                              bindlongpress="imageAction"
+                              wx:for="{{swiperImages}}"
+                              wx:key="{{item.fileName}}">
+                            <image class="weui-uploader__img" src="{{item.tempPath}}" mode="aspectFill"></image>
+                            <view class="weui-uploader__file-content">
+                                <view wx:if="{{!item.completed}}">
+                                    {{item.progress}}%
+                                </view>
+                                <icon wx:if="{{item.completed&&!item.success}}" type="warn"
+                                      size="23"
+                                      color="#F43530"></icon>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="weui-uploader__input-box" wx:if="{{swiperImages.length<6}}">
+                        <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="weui-btn-area">
+    <button class="weui-btn" type="primary" bindtap="submit">保存</button>
+</view>

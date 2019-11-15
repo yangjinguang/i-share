@@ -1,6 +1,6 @@
 import {HttpClient} from '../utils/http-client';
 import {config} from '../utils/config';
-import {Swiper} from '../utils/types/swiper';
+import {Banner} from '../utils/types/banner';
 
 export class SettingsApi {
     private http: HttpClient;
@@ -13,11 +13,11 @@ export class SettingsApi {
         return this.http.get(`${config.apiBaseUrl}/settings/upload-token`);
     }
 
-    public swiperGet(): Promise<Swiper> {
-        return this.http.get(`${config.apiBaseUrl}/settings/swiper`);
+    public getBanners(): Promise<Banner[]> {
+        return this.http.get(`${config.apiBaseUrl}/settings/banner`);
     }
 
-    public swiperUpdate(images: string[]): Promise<Swiper> {
-        return this.http.put(`${config.apiBaseUrl}/settings/swiper`, {images: images});
+    public updateBanners(images: string[]): Promise<Banner> {
+        return this.http.put(`${config.apiBaseUrl}/settings/banner`, images);
     }
 }
