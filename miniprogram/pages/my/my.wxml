@@ -60,15 +60,6 @@
             <view class="weui-cell__bd">待办</view>
             <view class="weui-cell__ft weui-cell__ft_in-access text-warn">{{todoCount}}</view>
         </navigator>
-        <navigator url="/pages/my/profile/profile" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-            <view class="weui-cell__hd weui-cell__icon">
-                <image src="/icons/file-user.png"></image>
-            </view>
-            <view class="weui-cell__bd">个人资料</view>
-            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-        </navigator>
-        <!--    </view>-->
-        <!--    <view class="weui-cells weui-cells_after-title">-->
         <navigator url="/pages/my/my-items/my-items" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
             <view class="weui-cell__hd weui-cell__icon">
                 <image src="/icons/books.png"></image>
@@ -110,16 +101,6 @@
             <view class="weui-cell__bd">班级管理</view>
             <view class="weui-cell__ft weui-cell__ft_in-access"></view>
         </navigator>
-        <!--        <navigator url="/pages/my/children-mgr/children-mgr"-->
-        <!--                   wx:if="{{isTeacher}}"-->
-        <!--                   class="weui-cell weui-cell_access"-->
-        <!--                   hover-class="weui-cell_active">-->
-        <!--            <view class="weui-cell__hd weui-cell__icon">-->
-        <!--                <image src="/icons/user-class.png"></image>-->
-        <!--            </view>-->
-        <!--            <view class="weui-cell__bd">我的班级</view>-->
-        <!--            <view class="weui-cell__ft weui-cell__ft_in-access"></view>-->
-        <!--        </navigator>-->
         <navigator url="/pages/my/tags-mgr/tags-mgr"
                    wx:if="{{isAdmin}}"
                    class="weui-cell weui-cell_access"

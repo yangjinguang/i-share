@@ -241,14 +241,14 @@ page {
     padding: 10rpx;
     margin-right: 10px;
     border-radius: 10rpx;
-    font-size: 20rpx;
+    font-size: 25rpx;
     color: #333;
     background-color: #FFFFFF;
 }
 
 .comment-input-group button {
     margin: 0;
-    height: 40rpx;
-    line-height: 40rpx;
-    font-size: 20rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    font-size: 25rpx;
 }

@@ -1,3 +1,11 @@
+page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.item-detail-body {
+    overflow: auto;
+}
 .item-header {
     display: flex;
     padding: 40rpx;
@@ -47,9 +55,9 @@
 }
 
 .item-controls {
-    position: fixed;
-    bottom: 0;
-    left: 0;
+    /*position: fixed;*/
+    /*bottom: 0;*/
+    /*left: 0;*/
     width: 100%;
     display: flex;
     align-items: center;
