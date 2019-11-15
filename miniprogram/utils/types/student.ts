@@ -11,5 +11,7 @@ export interface Student {
 
     class: Class;
     grade: Grade;
+    className:string;
+    gradeName:string;
     classView: string;
 }

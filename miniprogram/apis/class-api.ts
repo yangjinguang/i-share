@@ -58,9 +58,14 @@ export class ClassApi {
         return this.http.get(`${config.apiBaseUrl}/class/${classId}`);
     }
 
+    public getMyClass(): Promise<Class[]> {
+        return this.http.get(`${config.apiBaseUrl}/class/my`);
+    }
+
     public delete(classId: number): Promise<null> {
         return this.http.delete(`${config.apiBaseUrl}/class/${classId}`);
     }
+
     public deleteGrade(gradeId: number): Promise<null> {
         return this.http.delete(`${config.apiBaseUrl}/grade/${gradeId}`);
     }

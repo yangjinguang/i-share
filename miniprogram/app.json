@@ -17,6 +17,8 @@
     "pages/my/items-mgr/items-mgr",
     "pages/my/my-items/my-items",
     "pages/my/my-share/my-share",
+    "pages/my/my-class/my-class",
+    "pages/my/my-student/my-student",
     "pages/my/index-mgr/index-mgr",
     "pages/my/index-mgr/swiper/swiper",
     "pages/item/upload/upload",

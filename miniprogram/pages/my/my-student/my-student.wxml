@@ -1,0 +1,13 @@
+<view class="weui-cells__title">孩子列表</view>
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_access"
+          wx:for="{{students}}"
+          wx:key="{{item.id}}"
+          data-student-id="{{item.id}}"
+          bindlongpress="studentAction"
+          hover-class="weui-cell_active">
+        <view class="weui-cell__bd">{{item.gradeName}}{{item.className}} - {{item.name}}</view>
+    </view>
+</view>
+
+<button bindtap="toIdAuth" class="weui-btn" type="primary">身份认证</button>

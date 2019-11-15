@@ -30,4 +30,12 @@ export class UserApi {
     public getIdAuthDetail(orderId: number): Promise<IdAuthOrder> {
         return this.http.get(`${config.apiBaseUrl}/users/id-auth/${orderId}`);
     }
+
+    public unbindClass(userId: number, classId: number): Promise<string> {
+        return this.http.put(`${config.apiBaseUrl}/users/unbind-class`, {userId: userId, classId: classId});
+    }
+
+    public unbindStudent(userId: number, studentId: number): Promise<string> {
+        return this.http.put(`${config.apiBaseUrl}/users/unbind-student`, {userId: userId, studentId: studentId});
+    }
 }

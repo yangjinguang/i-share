@@ -25,11 +25,12 @@ Page({
         classArr: <string[][]>[],
         classIndex: []
     },
-    onLoad() {
+    onLoad(q: any) {
         this.setData!({
             userApi: new UserApi(),
             classApi: new ClassApi(),
-            childApi: new StudentApi()
+            childApi: new StudentApi(),
+            roleIndex: q['roleIndex'] ? Number(q['roleIndex']) : 0
         });
     },
     onShow() {

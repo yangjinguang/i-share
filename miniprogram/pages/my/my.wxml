@@ -2,7 +2,8 @@
     <view class="weui-panel weui-panel_access my-banner">
         <view class="weui-panel__bd">
             <view class="userinfo-group">
-                <image class="userinfo-avatar" src="{{profile.avatarUrl||'/icons/user-circle.png'}}" mode="cover"></image>
+                <image class="userinfo-avatar" src="{{profile.avatarUrl||'/icons/user-circle.png'}}"
+                       mode="cover"></image>
                 <view class="userinfo-body">
                     <text class="userinfo-nickname">{{profile.nickName||'未登录'}}</text>
                     <view class="userinfo-role-list">
@@ -66,8 +67,8 @@
             <view class="weui-cell__bd">个人资料</view>
             <view class="weui-cell__ft weui-cell__ft_in-access"></view>
         </navigator>
-<!--    </view>-->
-<!--    <view class="weui-cells weui-cells_after-title">-->
+        <!--    </view>-->
+        <!--    <view class="weui-cells weui-cells_after-title">-->
         <navigator url="/pages/my/my-items/my-items" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
             <view class="weui-cell__hd weui-cell__icon">
                 <image src="/icons/books.png"></image>
@@ -80,6 +81,20 @@
                 <image src="/icons/compass.png"></image>
             </view>
             <view class="weui-cell__bd">我的分享</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+        <navigator url="/pages/my/my-class/my-class" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd weui-cell__icon">
+                <image src="/icons/user-class.png"></image>
+            </view>
+            <view class="weui-cell__bd">我的班级</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+        <navigator url="/pages/my/my-student/my-student" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd weui-cell__icon">
+                <image src="/icons/child.png"></image>
+            </view>
+            <view class="weui-cell__bd">我的孩子</view>
             <view class="weui-cell__ft weui-cell__ft_in-access"></view>
         </navigator>
     </view>
@@ -130,7 +145,7 @@
                    class="weui-cell weui-cell_access"
                    hover-class="weui-cell_active">
             <view class="weui-cell__hd weui-cell__icon">
-                <image src="/icons/books-cog.png"></image>
+                <image src="/icons/newspaper.png"></image>
             </view>
             <view class="weui-cell__bd">首页管理</view>
             <view class="weui-cell__ft weui-cell__ft_in-access"></view>
